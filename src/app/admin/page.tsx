@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
-import { Save, ArrowLeft, LayoutDashboard, FileText, Package, Globe, Leaf, ImageIcon } from 'lucide-react';
+import { Save, ArrowLeft, LayoutDashboard, FileText, Package, Globe, ImageIcon } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminPage() {
@@ -66,9 +66,6 @@ export default function AdminPage() {
               </TabsTrigger>
               <TabsTrigger value="blogs" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
                 <FileText className="h-4 w-4 mr-2" /> Blogs
-              </TabsTrigger>
-              <TabsTrigger value="sustainability" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
-                <Leaf className="h-4 w-4 mr-2" /> Sustainability
               </TabsTrigger>
               <TabsTrigger value="logistics" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
                 <Globe className="h-4 w-4 mr-2" /> Logistics
@@ -250,56 +247,6 @@ export default function AdminPage() {
                   </div>
                 </CardContent>
               </Card>
-            </TabsContent>
-
-            <TabsContent value="sustainability">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card className="border-none shadow-md">
-                  <CardHeader>
-                    <CardTitle>Commitment Text</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase text-muted-foreground">Section Title</label>
-                      <Input 
-                        value={formData.sustainability.title} 
-                        onChange={(e) => setFormData({
-                          ...formData, 
-                          sustainability: { ...formData.sustainability, title: e.target.value }
-                        })} 
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase text-muted-foreground">Mission Statement</label>
-                      <Textarea 
-                        rows={6}
-                        value={formData.sustainability.description} 
-                        onChange={(e) => setFormData({
-                          ...formData, 
-                          sustainability: { ...formData.sustainability, description: e.target.value }
-                        })} 
-                      />
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="border-none shadow-md">
-                  <CardHeader>
-                    <CardTitle>Sustainability Image</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase text-muted-foreground">Image URL</label>
-                      <Input 
-                        value={formData.sustainability.imageUrl} 
-                        onChange={(e) => setFormData({
-                          ...formData, 
-                          sustainability: { ...formData.sustainability, imageUrl: e.target.value }
-                        })} 
-                      />
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
             </TabsContent>
 
             <TabsContent value="logistics">

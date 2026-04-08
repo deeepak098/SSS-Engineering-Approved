@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from 'react';
@@ -141,31 +142,6 @@ export function AdminContentManagement() {
                 </div>
               </div>
             ))}
-          </section>
-
-          {/* Sustainability */}
-          <section className="space-y-4">
-            <h3 className="font-headline font-bold text-lg text-primary">Sustainability Commitment</h3>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Title</label>
-              <Input 
-                value={formData.sustainability.title} 
-                onChange={(e) => setFormData({
-                  ...formData, 
-                  sustainability: { ...formData.sustainability, title: e.target.value }
-                })} 
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Content Body</label>
-              <Textarea 
-                value={formData.sustainability.description} 
-                onChange={(e) => setFormData({
-                  ...formData, 
-                  sustainability: { ...formData.sustainability, description: e.target.value }
-                })} 
-              />
-            </div>
           </section>
         </div>
 

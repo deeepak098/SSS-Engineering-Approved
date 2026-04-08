@@ -1,3 +1,4 @@
+
 "use client"
 
 import Link from 'next/link';
@@ -13,7 +14,6 @@ export function Header() {
 
   const navItems = [
     { name: 'Products', href: '/products' },
-    { name: 'Sustainability', href: '/sustainability' },
     { name: 'Logistics', href: '/logistics' },
     { name: 'Blogs', href: '/blogs' },
     { name: 'About', href: '/about' },

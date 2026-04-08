@@ -34,12 +34,6 @@ type ContentData = {
     imageHint: string;
     stats: { label: string; value: string }[];
   };
-  sustainability: {
-    title: string;
-    description: string;
-    imageUrl: string;
-    imageHint: string;
-  };
   about: {
     imageUrl: string;
     imageHint: string;
@@ -116,12 +110,6 @@ const initialContent: ContentData = {
       { label: "Export Capacity", value: "1.2M Units/Mo" },
       { label: "Logistics Partners", value: "15+" }
     ]
-  },
-  sustainability: {
-    title: "Our Sustainability Commitment",
-    description: "We are committed to reducing our carbon footprint through innovative recycling technologies and renewable energy integration in our manufacturing facilities.",
-    imageUrl: "https://picsum.photos/seed/solar_factory_33/1000/600",
-    imageHint: "solar factory"
   },
   about: {
     imageUrl: "https://picsum.photos/seed/industrial_gears_machinery/1920/1080",

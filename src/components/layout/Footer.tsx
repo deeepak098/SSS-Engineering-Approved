@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Settings } from 'lucide-react';
 
@@ -30,7 +31,6 @@ export function Footer() {
               {[
                 { name: 'Home', href: '/' },
                 { name: 'Products', href: '/products' },
-                { name: 'Sustainability', href: '/sustainability' },
                 { name: 'Logistics', href: '/logistics' },
                 { name: 'Blogs', href: '/blogs' },
                 { name: 'About Us', href: '/about' },
