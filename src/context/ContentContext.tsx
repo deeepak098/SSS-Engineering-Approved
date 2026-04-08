@@ -3,6 +3,12 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
+type ProductSpec = {
+  capacity: string;
+  power: string;
+  molds: string;
+};
+
 type ContentData = {
   hero: {
     title: string;
@@ -17,6 +23,7 @@ type ContentData = {
     description: string;
     imageUrl: string;
     imageHint: string;
+    specs: ProductSpec;
   }[];
   blogs: {
     id: number;
@@ -51,24 +58,27 @@ const initialContent: ContentData = {
   products: [
     { 
       id: 1, 
-      title: "Precision Molding Machinery", 
-      description: "State-of-the-art molding machines for versatile industrial applications.", 
-      imageUrl: "https://picsum.photos/seed/molding_machine_88/600/400",
-      imageHint: "precision machinery"
+      title: "Rotary Egg Tray Machine", 
+      description: "High-speed rotary pulp molding for large-scale production. Fully automatic with PLC control.", 
+      imageUrl: "https://picsum.photos/seed/rotary_molding/800/500",
+      imageHint: "rotary machine",
+      specs: {
+        capacity: "3,000-5,000 trays/hr",
+        power: "45-90 kW",
+        molds: "8-12 sides rotary"
+      }
     },
     { 
       id: 2, 
-      title: "Automated Packaging Systems", 
-      description: "End-to-end packaging solutions designed for maximum efficiency.", 
-      imageUrl: "https://picsum.photos/seed/conveyor_system_77/600/400",
-      imageHint: "automated conveyor"
-    },
-    { 
-      id: 3, 
-      title: "Industrial Mixing Units", 
-      description: "Heavy-duty mixers engineered for chemical and food processing industries.", 
-      imageUrl: "https://picsum.photos/seed/mixing_tank_66/600/400",
-      imageHint: "industrial mixer"
+      title: "3 Mold Egg Tray Machine", 
+      description: "Compact 3-mold egg tray machine ideal for small to mid-scale production. Low investment, easy operation, and quick ROI.", 
+      imageUrl: "https://picsum.photos/seed/molding_machine_green/800/500",
+      imageHint: "green machinery",
+      specs: {
+        capacity: "1,000-1,500 trays/hr",
+        power: "22-45 kW",
+        molds: "3 molds"
+      }
     }
   ],
   blogs: [

@@ -1,48 +1,66 @@
+
 "use client"
 
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { useContent } from '@/context/ContentContext';
-import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export function ProductGrid() {
   const { content } = useContent();
 
   return (
-    <section id="products" className="py-24 bg-background">
+    <section id="products" className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
-          <div className="max-w-2xl space-y-4">
-            <h2 className="text-primary font-headline font-extrabold text-4xl md:text-5xl leading-tight">
-              High-Precision <br />
-              <span className="text-foreground">Machinery Solutions</span>
-            </h2>
-            <p className="text-muted-foreground text-lg">
-              Engineered for excellence, our products set the global standard for industrial efficiency.
-            </p>
-          </div>
-          <button className="hidden md:flex items-center text-primary font-headline font-bold text-sm tracking-widest mt-8 md:mt-0 hover:translate-x-2 transition-transform">
-            VIEW ALL PRODUCTS <ArrowRight className="ml-2 h-4 w-4" />
-          </button>
+        <div className="mb-16">
+          <div className="w-12 h-1 bg-primary mb-6" />
+          <h2 className="font-headline font-extrabold text-4xl md:text-5xl text-foreground mb-4">
+            Products & Machinery
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
+            Industrial-grade pulp molding machines engineered for reliability, high output, and minimal downtime.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {content.products.map((product) => {
             return (
-              <Card key={product.id} className="group overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-300">
-                <div className="relative h-[300px] overflow-hidden">
+              <Card key={product.id} className="overflow-hidden border border-border bg-white rounded-none shadow-sm hover:shadow-md transition-shadow">
+                <div className="relative h-[300px] md:h-[400px]">
                   <Image
                     src={product.imageUrl}
                     alt={product.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="object-cover"
                     data-ai-hint={product.imageHint}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <h3 className="font-headline font-bold text-2xl text-white mb-2">{product.title}</h3>
-                    <p className="text-white/80 text-sm line-clamp-2">{product.description}</p>
+                </div>
+                <div className="p-8 space-y-6">
+                  <div className="space-y-2">
+                    <h3 className="font-headline font-bold text-2xl text-foreground">{product.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {product.description}
+                    </p>
                   </div>
+
+                  <div className="grid grid-cols-3 gap-1">
+                    <div className="bg-muted/30 p-4 space-y-1">
+                      <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Capacity</span>
+                      <div className="text-sm font-bold text-foreground leading-tight">{product.specs?.capacity || "N/A"}</div>
+                    </div>
+                    <div className="bg-muted/30 p-4 space-y-1">
+                      <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Power</span>
+                      <div className="text-sm font-bold text-foreground leading-tight">{product.specs?.power || "N/A"}</div>
+                    </div>
+                    <div className="bg-muted/30 p-4 space-y-1">
+                      <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Molds</span>
+                      <div className="text-sm font-bold text-foreground leading-tight">{product.specs?.molds || "N/A"}</div>
+                    </div>
+                  </div>
+
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold rounded-none py-6 h-auto tracking-wide">
+                    Get Pricing
+                  </Button>
                 </div>
               </Card>
             );

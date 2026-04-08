@@ -27,7 +27,7 @@ export default function AdminPage() {
     updateContent(formData);
     toast({
       title: "Settings Saved",
-      description: "Website content and images have been successfully updated and persisted.",
+      description: "Website content and technical specifications have been successfully updated.",
     });
   };
 
@@ -42,7 +42,7 @@ export default function AdminPage() {
                 <LayoutDashboard className="h-8 w-8 text-primary" />
                 Admin Dashboard
               </h1>
-              <p className="text-muted-foreground">Manage your site content, products, and global settings.</p>
+              <p className="text-muted-foreground">Manage your site content, products, and technical specs.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button variant="outline" asChild>
@@ -56,7 +56,7 @@ export default function AdminPage() {
             </div>
           </div>
 
-          <Tabs defaultValue="hero" className="space-y-6">
+          <Tabs defaultValue="products" className="space-y-6">
             <TabsList className="bg-white border w-full justify-start h-auto p-1 flex-wrap">
               <TabsTrigger value="hero" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
                 <Globe className="h-4 w-4 mr-2" /> Hero & About
@@ -142,7 +142,7 @@ export default function AdminPage() {
               <Card className="border-none shadow-md">
                 <CardHeader>
                   <CardTitle>Product Management</CardTitle>
-                  <CardDescription>Edit product details and their associated imagery.</CardDescription>
+                  <CardDescription>Edit product details and their technical specifications.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 gap-6">
@@ -182,6 +182,46 @@ export default function AdminPage() {
                                 setFormData({ ...formData, products: newProducts });
                               }} 
                             />
+                          </div>
+                          
+                          {/* Specs Section */}
+                          <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t">
+                            <div className="space-y-2">
+                              <label className="text-xs font-bold text-muted-foreground">Capacity Spec</label>
+                              <Input 
+                                value={p.specs?.capacity || ''} 
+                                placeholder="e.g. 3000 trays/hr"
+                                onChange={(e) => {
+                                  const newProducts = [...formData.products];
+                                  newProducts[idx].specs = { ...newProducts[idx].specs, capacity: e.target.value };
+                                  setFormData({ ...formData, products: newProducts });
+                                }} 
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <label className="text-xs font-bold text-muted-foreground">Power Spec</label>
+                              <Input 
+                                value={p.specs?.power || ''} 
+                                placeholder="e.g. 45-90 kW"
+                                onChange={(e) => {
+                                  const newProducts = [...formData.products];
+                                  newProducts[idx].specs = { ...newProducts[idx].specs, power: e.target.value };
+                                  setFormData({ ...formData, products: newProducts });
+                                }} 
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <label className="text-xs font-bold text-muted-foreground">Molds Spec</label>
+                              <Input 
+                                value={p.specs?.molds || ''} 
+                                placeholder="e.g. 8 sides"
+                                onChange={(e) => {
+                                  const newProducts = [...formData.products];
+                                  newProducts[idx].specs = { ...newProducts[idx].specs, molds: e.target.value };
+                                  setFormData({ ...formData, products: newProducts });
+                                }} 
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
