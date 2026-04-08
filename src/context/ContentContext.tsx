@@ -39,8 +39,7 @@ const initialContent: ContentData = {
   products: [
     { id: 1, title: "Precision Molding Machinery", description: "State-of-the-art molding machines for versatile industrial applications.", image: "product-1" },
     { id: 2, title: "Automated Packaging Systems", description: "End-to-end packaging solutions designed for maximum efficiency.", image: "product-2" },
-    { id: 3, title: "Industrial Mixing Units", description: "Heavy-duty mixers engineered for chemical and food processing industries.", image: "product-3" },
-    { id: 4, title: "Smart Robotic Arms", description: "AI-integrated robotic arms for precise assembly and logistics.", image: "product-4" }
+    { id: 3, title: "Industrial Mixing Units", description: "Heavy-duty mixers engineered for chemical and food processing industries.", image: "product-3" }
   ],
   eggTray: {
     title: "Eco-Friendly Recycled Paper Egg Trays",

@@ -25,12 +25,6 @@
       "imageHint": "industrial mixer"
     },
     {
-      "id": "product-4",
-      "description": "Advanced robotics arm",
-      "imageUrl": "https://picsum.photos/seed/sss5/600/400",
-      "imageHint": "industrial robot"
-    },
-    {
       "id": "egg-tray-hero",
       "description": "Recycled paper egg trays stacked",
       "imageUrl": "https://picsum.photos/seed/sss6/800/600",
