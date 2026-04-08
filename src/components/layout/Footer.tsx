@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Settings } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -74,7 +74,12 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-white/50 space-y-4 md:space-y-0">
-          <p>© {new Date().getFullYear()} SSS Engineering Solutions. All Rights Reserved.</p>
+          <div className="flex items-center space-x-4">
+            <p>© {new Date().getFullYear()} SSS Engineering Solutions. All Rights Reserved.</p>
+            <Link href="/admin" className="flex items-center gap-1 hover:text-white transition-colors">
+              <Settings className="h-3 w-3" /> Admin
+            </Link>
+          </div>
           <div className="flex space-x-8">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>

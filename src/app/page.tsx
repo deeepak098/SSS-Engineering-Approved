@@ -6,7 +6,6 @@ import { Logistics } from '@/components/home/Logistics';
 import { Sustainability } from '@/components/home/Sustainability';
 import { BlogSection } from '@/components/home/BlogSection';
 import { ContactSection } from '@/components/home/ContactSection';
-import { AdminContentManagement } from '@/components/admin/content-management';
 
 export default function Home() {
   return (
@@ -19,13 +18,6 @@ export default function Home() {
         <Sustainability />
         <BlogSection />
         <ContactSection />
-        
-        {/* Hidden Admin Trigger - For testing purposes in this environment */}
-        <div className="bg-muted py-4 border-t">
-          <div className="container mx-auto px-4 flex justify-end">
-             <AdminContentManagement />
-          </div>
-        </div>
       </main>
       <Footer />
     </div>
