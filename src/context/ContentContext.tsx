@@ -48,7 +48,7 @@ type ContentData = {
 
 const initialContent: ContentData = {
   hero: {
-    title: "Innovating Industrial Solutions for a Sustainable Future",
+    title: "Innovating Industrial Solutions",
     description: "Leading manufacturer and exporter of high-precision engineering machinery and recycled paper products globally.",
     cta: "Explore Our Solutions",
     imageUrl: "https://picsum.photos/seed/industrial_gears_machinery/1920/1080",
