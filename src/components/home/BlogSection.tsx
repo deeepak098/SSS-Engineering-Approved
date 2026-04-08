@@ -1,11 +1,9 @@
-
 "use client"
 
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { useContent } from '@/context/ContentContext';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Calendar, Tag, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export function BlogSection() {
@@ -25,19 +23,16 @@ export function BlogSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {content.blogs.map((blog) => {
-            const imgData = PlaceHolderImages.find(img => img.id === blog.image);
             return (
               <Card key={blog.id} className="group overflow-hidden border-none shadow-md hover:shadow-xl transition-all duration-300 bg-white">
                 <div className="relative h-[240px] overflow-hidden">
-                  {imgData && (
-                    <Image
-                      src={imgData.imageUrl}
-                      alt={imgData.description}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      data-ai-hint={imgData.imageHint}
-                    />
-                  )}
+                  <Image
+                    src={blog.imageUrl}
+                    alt={blog.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    data-ai-hint={blog.imageHint}
+                  />
                   <div className="absolute top-4 left-4">
                     <span className="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
                       {blog.category}

@@ -1,29 +1,24 @@
-
 "use client"
 
 import Image from 'next/image';
 import { useContent } from '@/context/ContentContext';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Leaf, Recycle, Sun } from 'lucide-react';
 
 export function Sustainability() {
   const { content } = useContent();
-  const sustainImage = PlaceHolderImages.find(img => img.id === 'sustainability');
 
   return (
     <section id="sustainability" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-8">
         <div className="bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
           <div className="lg:w-1/2 relative h-[400px] lg:h-auto">
-            {sustainImage && (
-              <Image
-                src={sustainImage.imageUrl}
-                alt={sustainImage.description}
-                fill
-                className="object-cover"
-                data-ai-hint={sustainImage.imageHint}
-              />
-            )}
+            <Image
+              src={content.sustainability.imageUrl}
+              alt={content.sustainability.title}
+              fill
+              className="object-cover"
+              data-ai-hint={content.sustainability.imageHint}
+            />
             <div className="absolute inset-0 bg-primary/20" />
           </div>
           

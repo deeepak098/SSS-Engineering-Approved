@@ -1,26 +1,25 @@
+"use client"
 
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { useContent } from '@/context/ContentContext';
 
 export default function AboutPage() {
-  const aboutImage = PlaceHolderImages.find(img => img.id === 'hero-bg');
+  const { content } = useContent();
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
         <section className="relative h-[400px] flex items-center justify-center">
-          {aboutImage && (
-            <Image
-              src={aboutImage.imageUrl}
-              alt="About SSS Engineering"
-              fill
-              className="object-cover"
-              data-ai-hint={aboutImage.imageHint}
-            />
-          )}
+          <Image
+            src={content.about.imageUrl}
+            alt="About SSS Engineering"
+            fill
+            className="object-cover"
+            data-ai-hint={content.about.imageHint}
+          />
           <div className="absolute inset-0 bg-black/60" />
           <div className="relative z-10 text-center text-white px-4">
             <h1 className="font-headline font-extrabold text-5xl mb-4">About Us</h1>

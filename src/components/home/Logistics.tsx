@@ -1,26 +1,21 @@
-
 "use client"
 
 import Image from 'next/image';
 import { useContent } from '@/context/ContentContext';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Logistics() {
   const { content } = useContent();
-  const mapImage = PlaceHolderImages.find(img => img.id === 'global-map');
 
   return (
     <section id="logistics" className="py-24 bg-foreground relative overflow-hidden">
       <div className="absolute inset-0 opacity-20 pointer-events-none">
-        {mapImage && (
-          <Image
-            src={mapImage.imageUrl}
-            alt="World Map Background"
-            fill
-            className="object-contain"
-            data-ai-hint={mapImage.imageHint}
-          />
-        )}
+        <Image
+          src={content.logistics.imageUrl}
+          alt="World Map Background"
+          fill
+          className="object-contain"
+          data-ai-hint={content.logistics.imageHint}
+        />
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">

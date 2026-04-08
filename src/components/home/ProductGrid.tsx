@@ -1,10 +1,8 @@
-
 "use client"
 
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { useContent } from '@/context/ContentContext';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight } from 'lucide-react';
 
 export function ProductGrid() {
@@ -30,19 +28,16 @@ export function ProductGrid() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {content.products.map((product) => {
-            const imgData = PlaceHolderImages.find(img => img.id === product.image);
             return (
               <Card key={product.id} className="group overflow-hidden border-none shadow-lg hover:shadow-2xl transition-all duration-300">
                 <div className="relative h-[300px] overflow-hidden">
-                  {imgData && (
-                    <Image
-                      src={imgData.imageUrl}
-                      alt={imgData.description}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-ai-hint={imgData.imageHint}
-                    />
-                  )}
+                  <Image
+                    src={product.imageUrl}
+                    alt={product.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    data-ai-hint={product.imageHint}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
                     <h3 className="font-headline font-bold text-2xl text-white mb-2">{product.title}</h3>

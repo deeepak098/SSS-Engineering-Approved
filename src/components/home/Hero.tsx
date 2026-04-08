@@ -1,27 +1,22 @@
-
 "use client"
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useContent } from '@/context/ContentContext';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Hero() {
   const { content } = useContent();
-  const heroImage = PlaceHolderImages.find(img => img.id === 'hero-bg');
 
   return (
     <section className="relative h-[600px] md:h-[800px] w-full flex items-center justify-center overflow-hidden">
-      {heroImage && (
-        <Image
-          src={heroImage.imageUrl}
-          alt={heroImage.description}
-          fill
-          priority
-          className="object-cover"
-          data-ai-hint={heroImage.imageHint}
-        />
-      )}
+      <Image
+        src={content.hero.imageUrl}
+        alt={content.hero.imageHint}
+        fill
+        priority
+        className="object-cover"
+        data-ai-hint={content.hero.imageHint}
+      />
       <div className="absolute inset-0 bg-black/60" />
       
       <div className="container relative z-10 mx-auto px-4 text-center">
