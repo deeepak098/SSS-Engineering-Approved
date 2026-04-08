@@ -9,6 +9,11 @@ type ProductSpec = {
   molds: string;
 };
 
+type StatItem = {
+  label: string;
+  value: string;
+};
+
 type ContentData = {
   hero: {
     title: string;
@@ -17,6 +22,7 @@ type ContentData = {
     imageUrl: string;
     imageHint: string;
   };
+  stats: StatItem[];
   products: {
     id: number;
     title: string;
@@ -55,6 +61,12 @@ const initialContent: ContentData = {
     imageUrl: "https://picsum.photos/seed/industrial_gears_machinery/1920/1080",
     imageHint: "industrial gears"
   },
+  stats: [
+    { label: "Years Experience", value: "15+" },
+    { label: "Countries Exported", value: "30+" },
+    { label: "Tons Recycled/Year", value: "50K+" },
+    { label: "Machines Installed", value: "200+" }
+  ],
   products: [
     { 
       id: 1, 

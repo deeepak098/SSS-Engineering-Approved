@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
-import { Save, ArrowLeft, LayoutDashboard, FileText, Package, Globe, ImageIcon } from 'lucide-react';
+import { Save, ArrowLeft, LayoutDashboard, FileText, Package, Globe, ImageIcon, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminPage() {
@@ -59,7 +59,10 @@ export default function AdminPage() {
           <Tabs defaultValue="products" className="space-y-6">
             <TabsList className="bg-white border w-full justify-start h-auto p-1 flex-wrap">
               <TabsTrigger value="hero" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
-                <Globe className="h-4 w-4 mr-2" /> Hero & About
+                <Globe className="h-4 w-4 mr-2" /> Hero
+              </TabsTrigger>
+              <TabsTrigger value="stats" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
+                <BarChart3 className="h-4 w-4 mr-2" /> Main Stats
               </TabsTrigger>
               <TabsTrigger value="products" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
                 <Package className="h-4 w-4 mr-2" /> Products
@@ -138,6 +141,45 @@ export default function AdminPage() {
               </div>
             </TabsContent>
 
+            <TabsContent value="stats">
+              <Card className="border-none shadow-md">
+                <CardHeader>
+                  <CardTitle>Company Stats (Below Hero)</CardTitle>
+                  <CardDescription>Edit the 4 main statistics shown on the homepage.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {formData.stats.map((stat, idx) => (
+                      <div key={idx} className="p-4 border rounded-lg space-y-4 bg-muted/30">
+                        <div className="space-y-2">
+                          <label className="text-xs font-bold text-muted-foreground">Value (e.g. 15+)</label>
+                          <Input 
+                            value={stat.value} 
+                            onChange={(e) => {
+                              const newStats = [...formData.stats];
+                              newStats[idx].value = e.target.value;
+                              setFormData({ ...formData, stats: newStats });
+                            }}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-xs font-bold text-muted-foreground">Label</label>
+                          <Input 
+                            value={stat.label} 
+                            onChange={(e) => {
+                              const newStats = [...formData.stats];
+                              newStats[idx].label = e.target.value;
+                              setFormData({ ...formData, stats: newStats });
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
             <TabsContent value="products">
               <Card className="border-none shadow-md">
                 <CardHeader>
@@ -184,7 +226,6 @@ export default function AdminPage() {
                             />
                           </div>
                           
-                          {/* Specs Section */}
                           <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t">
                             <div className="space-y-2">
                               <label className="text-xs font-bold text-muted-foreground">Capacity Spec</label>
