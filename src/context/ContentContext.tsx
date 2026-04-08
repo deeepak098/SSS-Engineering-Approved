@@ -14,6 +14,12 @@ type StatItem = {
   value: string;
 };
 
+type LogisticsFeature = {
+  title: string;
+  description: string;
+  iconName: 'Globe' | 'Ship' | 'ShieldCheck' | 'FileCheck';
+};
+
 type ContentData = {
   hero: {
     title: string;
@@ -45,7 +51,7 @@ type ContentData = {
     description: string;
     imageUrl: string;
     imageHint: string;
-    stats: { label: string; value: string }[];
+    features: LogisticsFeature[];
   };
   about: {
     imageUrl: string;
@@ -58,7 +64,7 @@ const initialContent: ContentData = {
     title: "Innovating Industrial Solutions",
     description: "Leading manufacturer and exporter of high-precision engineering machinery and recycled paper products globally.",
     cta: "Explore Our Solutions",
-    imageUrl: "https://picsum.photos/seed/industrial_gears_machinery/1920/1080",
+    imageUrl: "https://thumbs.dreamstime.com/b/complex-network-industrial-pipelines-valves-machinery-inside-chemical-plant-interconnected-metal-pipes-processing-437487093.jpg",
     imageHint: "industrial gears"
   },
   stats: [
@@ -72,7 +78,7 @@ const initialContent: ContentData = {
       id: 1, 
       title: "Rotary Egg Tray Machine", 
       description: "High-speed rotary pulp molding for large-scale production. Fully automatic with PLC control.", 
-      imageUrl: "https://picsum.photos/seed/rotary_molding/800/500",
+      imageUrl: "https://npcinjection.usa72.wondercdn.com/uploads/image/61adb22913863.jpg",
       imageHint: "rotary machine",
       specs: {
         capacity: "3,000-5,000 trays/hr",
@@ -84,12 +90,24 @@ const initialContent: ContentData = {
       id: 2, 
       title: "3 Mold Egg Tray Machine", 
       description: "Compact 3-mold egg tray machine ideal for small to mid-scale production. Low investment, easy operation, and quick ROI.", 
-      imageUrl: "https://picsum.photos/seed/molding_machine_green/800/500",
+      imageUrl: "https://sdcautomation.com/wp-content/uploads/2025/01/sdc-machine-3.webp",
       imageHint: "green machinery",
       specs: {
         capacity: "1,000-1,500 trays/hr",
         power: "22-45 kW",
         molds: "3 molds"
+      }
+    },
+    { 
+      id: 3, 
+      title: "Pulp Mixing Unit", 
+      description: "Industrial-grade mixing unit for consistent pulp preparation. Engineered for durability and high-performance throughput.", 
+      imageUrl: "https://www.ifa-technology.net/fileadmin/_processed_/4/d/csm_Inline_mixer_Inline-Mischer_1_0b5d650e11.jpg",
+      imageHint: "industrial mixer",
+      specs: {
+        capacity: "8,000 L/hr",
+        power: "55 kW",
+        molds: "N/A"
       }
     }
   ],
@@ -123,14 +141,31 @@ const initialContent: ContentData = {
     }
   ],
   logistics: {
-    title: "Global Export & Logistics Network",
-    description: "We deliver excellence across 50+ countries with a robust supply chain and strategic logistics partners.",
-    imageUrl: "https://picsum.photos/seed/logistics_map_44/1200/600",
-    imageHint: "world map",
-    stats: [
-      { label: "Countries Served", value: "50+" },
-      { label: "Export Capacity", value: "1.2M Units/Mo" },
-      { label: "Logistics Partners", value: "15+" }
+    title: "Global Export & Logistics",
+    description: "Reliable international shipping with end-to-end export support for machinery and finished egg trays.",
+    imageUrl: "https://img.etimg.com/thumb/width-1200,height-900,imgsize-143762,resizemode-75,msid-120791589/news/economy/foreign-trade/comm-mins-export-promotion-mission-may-have-12-point-plan-to-push-exports-help-msme-exporters.jpg",
+    imageHint: "logistics port",
+    features: [
+      { 
+        title: "30+ Countries", 
+        description: "Active exports across Africa, Middle East, South & Southeast Asia",
+        iconName: 'Globe'
+      },
+      { 
+        title: "FOB & CIF Shipping", 
+        description: "Flexible shipping terms with containerized logistics",
+        iconName: 'Ship'
+      },
+      { 
+        title: "ISO 9001 Certified", 
+        description: "Quality management systems for consistent output",
+        iconName: 'ShieldCheck'
+      },
+      { 
+        title: "Customs Documentation", 
+        description: "Full export documentation and compliance support",
+        iconName: 'FileCheck'
+      }
     ]
   },
   about: {
@@ -155,11 +190,14 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
     if (savedContent) {
       try {
         const parsed = JSON.parse(savedContent);
-        // Merge with initialContent to ensure new keys like 'stats' exist
+        // Deep merge logic to ensure new keys like 'features' exist even if old data is in localStorage
         setContent(prev => ({
           ...initialContent,
           ...parsed,
-          // Deep merge for specific objects if needed, but for now top-level spread handles stats
+          logistics: {
+            ...initialContent.logistics,
+            ...(parsed.logistics || {})
+          }
         }));
       } catch (e) {
         console.error("Failed to parse saved content", e);

@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
-import { Save, ArrowLeft, LayoutDashboard, FileText, Package, Globe, ImageIcon, BarChart3 } from 'lucide-react';
+import { Save, ArrowLeft, LayoutDashboard, FileText, Package, Globe, ImageIcon, BarChart3, Ship, ShieldCheck, FileCheck } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminPage() {
@@ -59,7 +59,7 @@ export default function AdminPage() {
           <Tabs defaultValue="products" className="space-y-6">
             <TabsList className="bg-white border w-full justify-start h-auto p-1 flex-wrap">
               <TabsTrigger value="hero" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
-                <Globe className="h-4 w-4 mr-2" /> Hero
+                <ImageIcon className="h-4 w-4 mr-2" /> Hero
               </TabsTrigger>
               <TabsTrigger value="stats" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
                 <BarChart3 className="h-4 w-4 mr-2" /> Main Stats
@@ -67,11 +67,8 @@ export default function AdminPage() {
               <TabsTrigger value="products" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
                 <Package className="h-4 w-4 mr-2" /> Products
               </TabsTrigger>
-              <TabsTrigger value="blogs" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
-                <FileText className="h-4 w-4 mr-2" /> Blogs
-              </TabsTrigger>
               <TabsTrigger value="logistics" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5">
-                <Globe className="h-4 w-4 mr-2" /> Logistics
+                <Ship className="h-4 w-4 mr-2" /> Logistics
               </TabsTrigger>
             </TabsList>
 
@@ -272,73 +269,16 @@ export default function AdminPage() {
               </Card>
             </TabsContent>
 
-            <TabsContent value="blogs">
-              <Card className="border-none shadow-md">
-                <CardHeader>
-                  <CardTitle>Content Strategy & Blogs</CardTitle>
-                  <CardDescription>Manage articles and featured images.</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid grid-cols-1 gap-8">
-                    {formData.blogs.map((b, idx) => (
-                      <div key={b.id} className="p-6 border rounded-xl bg-muted/30 space-y-4">
-                        <div className="flex justify-between items-center">
-                          <h4 className="font-bold text-primary italic">Article #{idx + 1}</h4>
-                          <span className="text-xs font-bold text-muted-foreground bg-white px-2 py-1 rounded border">{b.category}</span>
-                        </div>
-                        <div className="space-y-4">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                              <label className="text-xs font-bold text-muted-foreground">Title</label>
-                              <Input 
-                                value={b.title} 
-                                onChange={(e) => {
-                                  const newBlogs = [...formData.blogs];
-                                  newBlogs[idx].title = e.target.value;
-                                  setFormData({ ...formData, blogs: newBlogs });
-                                }} 
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <label className="text-xs font-bold text-muted-foreground">Image URL</label>
-                              <Input 
-                                value={b.imageUrl} 
-                                onChange={(e) => {
-                                  const newBlogs = [...formData.blogs];
-                                  newBlogs[idx].imageUrl = e.target.value;
-                                  setFormData({ ...formData, blogs: newBlogs });
-                                }} 
-                              />
-                            </div>
-                          </div>
-                          <div className="space-y-2">
-                            <label className="text-xs font-bold text-muted-foreground">Excerpt</label>
-                            <Textarea 
-                              value={b.excerpt} 
-                              onChange={(e) => {
-                                const newBlogs = [...formData.blogs];
-                                newBlogs[idx].excerpt = e.target.value;
-                                setFormData({ ...formData, blogs: newBlogs });
-                              }} 
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
             <TabsContent value="logistics">
               <Card className="border-none shadow-md">
                 <CardHeader>
                   <CardTitle>Logistics Settings</CardTitle>
+                  <CardDescription>Manage the export banner and feature cards.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase text-muted-foreground">Title</label>
+                      <label className="text-sm font-bold uppercase text-muted-foreground">Section Title</label>
                       <Input 
                         value={formData.logistics.title} 
                         onChange={(e) => setFormData({
@@ -348,7 +288,7 @@ export default function AdminPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase text-muted-foreground">Background Map Image URL</label>
+                      <label className="text-sm font-bold uppercase text-muted-foreground">Banner Image URL</label>
                       <Input 
                         value={formData.logistics.imageUrl} 
                         onChange={(e) => setFormData({
@@ -359,7 +299,7 @@ export default function AdminPage() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold uppercase text-muted-foreground">Description</label>
+                    <label className="text-sm font-bold uppercase text-muted-foreground">Section Subtitle</label>
                     <Textarea 
                       value={formData.logistics.description} 
                       onChange={(e) => setFormData({
@@ -367,6 +307,44 @@ export default function AdminPage() {
                         logistics: { ...formData.logistics, description: e.target.value }
                       })} 
                     />
+                  </div>
+
+                  <div className="pt-6 border-t space-y-6">
+                    <h3 className="font-bold text-lg">Feature Cards</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {formData.logistics.features.map((feature, idx) => (
+                        <div key={idx} className="p-4 border rounded-xl bg-muted/30 space-y-4">
+                          <div className="space-y-2">
+                            <label className="text-xs font-bold text-muted-foreground">Card Title</label>
+                            <Input 
+                              value={feature.title} 
+                              onChange={(e) => {
+                                const newFeatures = [...formData.logistics.features];
+                                newFeatures[idx].title = e.target.value;
+                                setFormData({
+                                  ...formData,
+                                  logistics: { ...formData.logistics, features: newFeatures }
+                                });
+                              }}
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <label className="text-xs font-bold text-muted-foreground">Card Description</label>
+                            <Textarea 
+                              value={feature.description} 
+                              onChange={(e) => {
+                                const newFeatures = [...formData.logistics.features];
+                                newFeatures[idx].description = e.target.value;
+                                setFormData({
+                                  ...formData,
+                                  logistics: { ...formData.logistics, features: newFeatures }
+                                });
+                              }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </CardContent>
               </Card>

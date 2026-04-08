@@ -1,44 +1,68 @@
+
 "use client"
 
 import Image from 'next/image';
 import { useContent } from '@/context/ContentContext';
+import { Globe, Ship, ShieldCheck, FileCheck } from 'lucide-react';
+
+const IconMap = {
+  Globe: Globe,
+  Ship: Ship,
+  ShieldCheck: ShieldCheck,
+  FileCheck: FileCheck,
+};
 
 export function Logistics() {
   const { content } = useContent();
 
   return (
-    <section id="logistics" className="py-24 bg-foreground relative overflow-hidden">
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <Image
-          src={content.logistics.imageUrl}
-          alt="World Map Background"
-          fill
-          className="object-contain"
-          data-ai-hint={content.logistics.imageHint}
-        />
-      </div>
-
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <h2 className="font-headline font-extrabold text-4xl md:text-5xl text-white">
+    <section id="logistics" className="py-24 bg-[#f4f4f4]">
+      <div className="container mx-auto px-4 md:px-8">
+        {/* Header */}
+        <div className="mb-12">
+          <div className="w-12 h-1 bg-primary mb-6" />
+          <h2 className="font-headline font-extrabold text-3xl md:text-4xl text-foreground mb-4">
             {content.logistics.title}
           </h2>
-          <p className="text-white/70 text-lg">
+          <p className="text-muted-foreground text-base max-w-2xl leading-relaxed">
             {content.logistics.description}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {content.logistics.stats.map((stat, i) => (
-            <div key={i} className="text-center space-y-2 group">
-              <div className="text-primary font-headline font-extrabold text-6xl md:text-7xl group-hover:scale-110 transition-transform">
-                {stat.value}
+        {/* Hero Image */}
+        <div className="relative w-full h-[300px] md:h-[450px] mb-0 overflow-hidden shadow-sm">
+          <Image
+            src={content.logistics.imageUrl}
+            alt="Global Export Logistics"
+            fill
+            className="object-cover"
+            data-ai-hint={content.logistics.imageHint}
+          />
+        </div>
+
+        {/* Features Grid */}
+        <div className="bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-x border-b border-border">
+          {content.logistics.features.map((feature, i) => {
+            const IconComponent = IconMap[feature.iconName] || Globe;
+            return (
+              <div 
+                key={i} 
+                className="p-8 space-y-4 border-b md:border-b-0 md:border-r last:border-r-0 border-border"
+              >
+                <div className="p-3 w-fit">
+                  <IconComponent className="h-8 w-8 text-primary" strokeWidth={1.5} />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="font-headline font-bold text-lg text-foreground">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
-              <div className="text-white font-headline font-bold text-lg uppercase tracking-widest opacity-80">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
