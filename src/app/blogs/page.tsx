@@ -1,6 +1,12 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BlogSection } from '@/components/home/BlogSection';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Industry Insights',
+  description: 'Stay updated with the latest trends in sustainable manufacturing, engineering breakthroughs, and global trade insights.',
+};
 
 export default function BlogsPage() {
   return (

@@ -1,6 +1,12 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ProductGrid } from '@/components/home/ProductGrid';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Our Products',
+  description: 'Explore our high-performance rotary and multi-mold egg tray machines and pulp molding units engineered for global industrial performance.',
+};
 
 export default function ProductsPage() {
   return (
@@ -9,7 +15,7 @@ export default function ProductsPage() {
       <main className="flex-1">
         <section className="bg-muted py-16">
           <div className="container mx-auto px-4 md:px-8 text-center">
-            <h1 className="font-headline font-extrabold text-5xl mb-4">Our Products</h1>
+            <h1 className="font-headline font-extrabold text-5xl mb-4">Industrial Machinery</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Explore our range of industrial machinery and sustainable packaging solutions engineered for global performance.
             </p>

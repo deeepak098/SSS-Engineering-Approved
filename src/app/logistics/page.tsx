@@ -1,6 +1,12 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Logistics } from '@/components/home/Logistics';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Global Export & Logistics',
+  description: 'Reliable international shipping and logistics management for industrial machinery in over 50 countries.',
+};
 
 export default function LogisticsPage() {
   return (
