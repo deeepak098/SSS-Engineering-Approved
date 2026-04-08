@@ -33,7 +33,8 @@ export function Footer() {
                 { name: 'Sustainability', href: '/sustainability' },
                 { name: 'Logistics', href: '/logistics' },
                 { name: 'Blogs', href: '/blogs' },
-                { name: 'About Us', href: '/about' }
+                { name: 'About Us', href: '/about' },
+                { name: 'Contact', href: '/contact' }
               ].map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="hover:text-primary transition-colors">{link.name}</Link>

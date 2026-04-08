@@ -17,6 +17,7 @@ export function Header() {
     { name: 'Logistics', href: '/logistics' },
     { name: 'Blogs', href: '/blogs' },
     { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -49,7 +50,7 @@ export function Header() {
               <Search className="h-5 w-5 text-foreground" />
             </button>
             <Button className="hidden md:flex font-headline font-bold" size="lg" asChild>
-              <Link href="/#contact">CONTACT US</Link>
+              <Link href="/contact">CONTACT US</Link>
             </Button>
             <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -78,7 +79,7 @@ export function Header() {
             </Link>
           ))}
           <Button className="w-full font-headline font-bold py-6" asChild>
-             <Link href="/#contact" onClick={() => setIsOpen(false)}>CONTACT US</Link>
+             <Link href="/contact" onClick={() => setIsOpen(false)}>CONTACT US</Link>
           </Button>
         </nav>
       </div>
