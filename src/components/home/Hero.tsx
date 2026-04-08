@@ -31,7 +31,7 @@ export function Hero() {
             <Button size="lg" className="font-headline font-bold px-10 py-7 text-lg bg-primary hover:bg-primary/90">
               {content.hero.cta}
             </Button>
-            <Button size="lg" variant="outline" className="font-headline font-bold px-10 py-7 text-lg text-white border-white hover:bg-white/10">
+            <Button size="lg" variant="outline" className="font-headline font-bold px-10 py-7 text-lg text-white border-white bg-transparent hover:bg-white/10">
               LEARN MORE
             </Button>
           </div>
