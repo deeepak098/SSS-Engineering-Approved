@@ -40,6 +40,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'npcinjection.usa72.wondercdn.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
