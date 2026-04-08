@@ -16,7 +16,7 @@ export function BlogSection() {
           <h2 className="font-headline font-extrabold text-4xl md:text-5xl text-foreground">
             Insights & <span className="text-primary">Innovation</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg font-body">
             Stay updated with the latest trends in engineering, sustainable manufacturing, and global logistics.
           </p>
         </div>
@@ -24,7 +24,7 @@ export function BlogSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {content.blogs.map((blog) => {
             return (
-              <Card key={blog.id} className="group overflow-hidden border-none shadow-md hover:shadow-xl transition-all duration-300 bg-white">
+              <Card key={blog.id} className="group overflow-hidden border-none shadow-md hover:shadow-xl transition-all duration-300 bg-white flex flex-col h-full">
                 <div className="relative h-[240px] overflow-hidden">
                   <Image
                     src={blog.imageUrl}
@@ -39,8 +39,8 @@ export function BlogSection() {
                     </span>
                   </div>
                 </div>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center space-x-4 text-xs text-muted-foreground">
+                <CardContent className="p-6 space-y-4 flex-1 flex flex-col">
+                  <div className="flex items-center space-x-4 text-xs text-muted-foreground font-body">
                     <div className="flex items-center space-x-1">
                       <Calendar className="h-3 w-3" />
                       <span>{blog.date}</span>
@@ -49,11 +49,11 @@ export function BlogSection() {
                   <h3 className="font-headline font-bold text-xl text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {blog.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm line-clamp-3">
+                  <p className="text-muted-foreground text-sm line-clamp-3 font-body flex-1">
                     {blog.excerpt}
                   </p>
-                  <div className="pt-2">
-                    <Link href="#" className="inline-flex items-center text-primary font-bold text-xs tracking-widest hover:translate-x-2 transition-transform">
+                  <div className="pt-4 border-t border-border/50">
+                    <Link href={`/blogs/${blog.id}`} className="inline-flex items-center text-primary font-bold text-xs tracking-widest hover:translate-x-2 transition-transform uppercase font-headline">
                       READ ARTICLE <ArrowRight className="ml-2 h-3 w-3" />
                     </Link>
                   </div>
