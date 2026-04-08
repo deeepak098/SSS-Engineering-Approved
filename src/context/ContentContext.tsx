@@ -154,7 +154,13 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
     const savedContent = localStorage.getItem('sss_engineering_content');
     if (savedContent) {
       try {
-        setContent(JSON.parse(savedContent));
+        const parsed = JSON.parse(savedContent);
+        // Merge with initialContent to ensure new keys like 'stats' exist
+        setContent(prev => ({
+          ...initialContent,
+          ...parsed,
+          // Deep merge for specific objects if needed, but for now top-level spread handles stats
+        }));
       } catch (e) {
         console.error("Failed to parse saved content", e);
       }
