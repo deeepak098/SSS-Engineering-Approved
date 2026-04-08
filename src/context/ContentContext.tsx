@@ -14,6 +14,14 @@ type ContentData = {
     description: string;
     image: string;
   }[];
+  blogs: {
+    id: number;
+    title: string;
+    excerpt: string;
+    date: string;
+    image: string;
+    category: string;
+  }[];
   eggTray: {
     title: string;
     description: string;
@@ -40,6 +48,32 @@ const initialContent: ContentData = {
     { id: 1, title: "Precision Molding Machinery", description: "State-of-the-art molding machines for versatile industrial applications.", image: "product-1" },
     { id: 2, title: "Automated Packaging Systems", description: "End-to-end packaging solutions designed for maximum efficiency.", image: "product-2" },
     { id: 3, title: "Industrial Mixing Units", description: "Heavy-duty mixers engineered for chemical and food processing industries.", image: "product-3" }
+  ],
+  blogs: [
+    {
+      id: 1,
+      title: "The Future of Sustainable Packaging in 2024",
+      excerpt: "Explore how recycled paper materials are revolutionizing the global packaging industry with innovative molding techniques.",
+      date: "May 15, 2024",
+      image: "blog-1",
+      category: "Sustainability"
+    },
+    {
+      id: 2,
+      title: "Optimizing Industrial Machinery Efficiency",
+      excerpt: "Learn the top 5 engineering strategies to maximize throughput and minimize energy consumption in precision manufacturing.",
+      date: "June 02, 2024",
+      image: "blog-2",
+      category: "Engineering"
+    },
+    {
+      id: 3,
+      title: "Global Supply Chain Resilience",
+      excerpt: "How strategic logistics partnerships are helping manufacturers overcome international trade challenges in the modern era.",
+      date: "June 20, 2024",
+      image: "blog-3",
+      category: "Logistics"
+    }
   ],
   eggTray: {
     title: "Eco-Friendly Recycled Paper Egg Trays",

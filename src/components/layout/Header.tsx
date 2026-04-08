@@ -20,7 +20,7 @@ export function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            {['Products', 'Services', 'Sustainability', 'Logistics', 'About'].map((item) => (
+            {['Products', 'Sustainability', 'Logistics', 'Blogs', 'About'].map((item) => (
               <Link
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -51,7 +51,7 @@ export function Header() {
         isOpen ? "translate-x-0" : "translate-x-full"
       )}>
         <nav className="flex flex-col p-8 space-y-6">
-          {['Products', 'Services', 'Sustainability', 'Logistics', 'About'].map((item) => (
+          {['Products', 'Sustainability', 'Logistics', 'Blogs', 'About'].map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}

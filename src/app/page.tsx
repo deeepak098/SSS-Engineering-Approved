@@ -5,6 +5,7 @@ import { ProductGrid } from '@/components/home/ProductGrid';
 import { EggTrayFeatures } from '@/components/home/EggTrayFeatures';
 import { Logistics } from '@/components/home/Logistics';
 import { Sustainability } from '@/components/home/Sustainability';
+import { BlogSection } from '@/components/home/BlogSection';
 import { ContactSection } from '@/components/home/ContactSection';
 import { AdminContentManagement } from '@/components/admin/content-management';
 
@@ -18,6 +19,7 @@ export default function Home() {
         <EggTrayFeatures />
         <Logistics />
         <Sustainability />
+        <BlogSection />
         <ContactSection />
         
         {/* Hidden Admin Trigger - For testing purposes in this environment */}

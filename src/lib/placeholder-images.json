@@ -41,6 +41,24 @@
       "description": "Eco-friendly factory with solar panels",
       "imageUrl": "https://picsum.photos/seed/sss8/1000/600",
       "imageHint": "sustainable factory"
+    },
+    {
+      "id": "blog-1",
+      "description": "Close up of recycled paper texture",
+      "imageUrl": "https://picsum.photos/seed/sss9/800/500",
+      "imageHint": "recycled paper"
+    },
+    {
+      "id": "blog-2",
+      "description": "Engineer working on high precision machine",
+      "imageUrl": "https://picsum.photos/seed/sss10/800/500",
+      "imageHint": "engineering machinery"
+    },
+    {
+      "id": "blog-3",
+      "description": "A green factory in a sunny day",
+      "imageUrl": "https://picsum.photos/seed/sss11/800/500",
+      "imageHint": "green energy"
     }
   ]
 }

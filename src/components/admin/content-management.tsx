@@ -99,6 +99,50 @@ export function AdminContentManagement() {
             ))}
           </section>
 
+          {/* Blogs Management */}
+          <section className="space-y-4 border-b pb-6">
+            <h3 className="font-headline font-bold text-lg text-primary">Blogs Management</h3>
+            {formData.blogs.map((b, idx) => (
+              <div key={b.id} className="space-y-4 border p-4 rounded-lg bg-muted/50">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase">Blog {idx + 1} Title</label>
+                    <Input 
+                      value={b.title} 
+                      onChange={(e) => {
+                        const newBlogs = [...formData.blogs];
+                        newBlogs[idx].title = e.target.value;
+                        setFormData({ ...formData, blogs: newBlogs });
+                      }} 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase">Category</label>
+                    <Input 
+                      value={b.category} 
+                      onChange={(e) => {
+                        const newBlogs = [...formData.blogs];
+                        newBlogs[idx].category = e.target.value;
+                        setFormData({ ...formData, blogs: newBlogs });
+                      }} 
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase">Excerpt</label>
+                  <Textarea 
+                    value={b.excerpt} 
+                    onChange={(e) => {
+                      const newBlogs = [...formData.blogs];
+                      newBlogs[idx].excerpt = e.target.value;
+                      setFormData({ ...formData, blogs: newBlogs });
+                    }} 
+                  />
+                </div>
+              </div>
+            ))}
+          </section>
+
           {/* Egg Tray Section */}
           <section className="space-y-4 border-b pb-6">
             <h3 className="font-headline font-bold text-lg text-primary">Egg Tray Section</h3>
