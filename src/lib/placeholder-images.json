@@ -25,12 +25,6 @@
       "imageHint": "industrial mixer"
     },
     {
-      "id": "egg-tray-hero",
-      "description": "Eco-friendly recycled paper egg packaging",
-      "imageUrl": "https://picsum.photos/seed/egg_packaging_55/800/600",
-      "imageHint": "egg trays"
-    },
-    {
       "id": "global-map",
       "description": "World map with logistics network connections",
       "imageUrl": "https://picsum.photos/seed/logistics_map_44/1200/600",

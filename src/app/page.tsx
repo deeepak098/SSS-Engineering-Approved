@@ -2,7 +2,6 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/home/Hero';
 import { ProductGrid } from '@/components/home/ProductGrid';
-import { EggTrayFeatures } from '@/components/home/EggTrayFeatures';
 import { Logistics } from '@/components/home/Logistics';
 import { Sustainability } from '@/components/home/Sustainability';
 import { BlogSection } from '@/components/home/BlogSection';
@@ -16,7 +15,6 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <ProductGrid />
-        <EggTrayFeatures />
         <Logistics />
         <Sustainability />
         <BlogSection />

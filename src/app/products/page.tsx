@@ -1,7 +1,6 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ProductGrid } from '@/components/home/ProductGrid';
-import { EggTrayFeatures } from '@/components/home/EggTrayFeatures';
 
 export default function ProductsPage() {
   return (
@@ -17,7 +16,6 @@ export default function ProductsPage() {
           </div>
         </section>
         <ProductGrid />
-        <EggTrayFeatures />
       </main>
       <Footer />
     </div>

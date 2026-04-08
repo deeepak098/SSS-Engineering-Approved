@@ -143,31 +143,6 @@ export function AdminContentManagement() {
             ))}
           </section>
 
-          {/* Egg Tray Section */}
-          <section className="space-y-4 border-b pb-6">
-            <h3 className="font-headline font-bold text-lg text-primary">Egg Tray Section</h3>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Section Title</label>
-              <Input 
-                value={formData.eggTray.title} 
-                onChange={(e) => setFormData({
-                  ...formData, 
-                  eggTray: { ...formData.eggTray, title: e.target.value }
-                })} 
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Description</label>
-              <Textarea 
-                value={formData.eggTray.description} 
-                onChange={(e) => setFormData({
-                  ...formData, 
-                  eggTray: { ...formData.eggTray, description: e.target.value }
-                })} 
-              />
-            </div>
-          </section>
-
           {/* Sustainability */}
           <section className="space-y-4">
             <h3 className="font-headline font-bold text-lg text-primary">Sustainability Commitment</h3>

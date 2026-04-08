@@ -22,11 +22,6 @@ type ContentData = {
     image: string;
     category: string;
   }[];
-  eggTray: {
-    title: string;
-    description: string;
-    features: string[];
-  };
   logistics: {
     title: string;
     description: string;
@@ -75,16 +70,6 @@ const initialContent: ContentData = {
       category: "Logistics"
     }
   ],
-  eggTray: {
-    title: "Eco-Friendly Recycled Paper Egg Trays",
-    description: "Our egg trays are manufactured from 100% recycled paper pulp, offering superior protection and sustainability.",
-    features: [
-      "100% Biodegradable & Recyclable",
-      "Shock-Absorbent Design",
-      "Ventilated for Freshness",
-      "Custom Branding Available"
-    ]
-  },
   logistics: {
     title: "Global Export & Logistics Network",
     description: "We deliver excellence across 50+ countries with a robust supply chain and strategic logistics partners.",
