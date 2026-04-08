@@ -1,6 +1,7 @@
+
 "use client"
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useContent } from '@/context/ContentContext';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -18,11 +19,15 @@ export default function AdminPage() {
   const { toast } = useToast();
   const [formData, setFormData] = useState(content);
 
+  useEffect(() => {
+    setFormData(content);
+  }, [content]);
+
   const handleSave = () => {
     updateContent(formData);
     toast({
       title: "Settings Saved",
-      description: "Website content and images have been successfully updated.",
+      description: "Website content and images have been successfully updated and persisted.",
     });
   };
 
@@ -104,7 +109,7 @@ export default function AdminPage() {
                 <Card className="border-none shadow-md">
                   <CardHeader>
                     <CardTitle>Hero & About Images</CardTitle>
-                    <CardDescription>Update URLs for the main hero background.</CardDescription>
+                    <CardDescription>Update URLs for the main hero and about backgrounds.</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="space-y-2">
@@ -115,18 +120,19 @@ export default function AdminPage() {
                         value={formData.hero.imageUrl} 
                         onChange={(e) => setFormData({
                           ...formData, 
-                          hero: { ...formData.hero, imageUrl: e.target.value },
-                          about: { ...formData.about, imageUrl: e.target.value } // Keep sync for about as well if needed
+                          hero: { ...formData.hero, imageUrl: e.target.value }
                         })} 
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Image Hint (SEO)</label>
+                      <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                        <ImageIcon className="h-4 w-4" /> About Page Image URL
+                      </label>
                       <Input 
-                        value={formData.hero.imageHint} 
+                        value={formData.about.imageUrl} 
                         onChange={(e) => setFormData({
                           ...formData, 
-                          hero: { ...formData.hero, imageHint: e.target.value }
+                          about: { ...formData.about, imageUrl: e.target.value }
                         })} 
                       />
                     </div>
@@ -288,16 +294,6 @@ export default function AdminPage() {
                         onChange={(e) => setFormData({
                           ...formData, 
                           sustainability: { ...formData.sustainability, imageUrl: e.target.value }
-                        })} 
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase text-muted-foreground">Image Hint</label>
-                      <Input 
-                        value={formData.sustainability.imageHint} 
-                        onChange={(e) => setFormData({
-                          ...formData, 
-                          sustainability: { ...formData.sustainability, imageHint: e.target.value }
                         })} 
                       />
                     </div>

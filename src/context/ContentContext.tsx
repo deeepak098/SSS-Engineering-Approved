@@ -1,6 +1,7 @@
+
 "use client"
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type ContentData = {
   hero: {
@@ -137,10 +138,29 @@ const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
 export const ContentProvider = ({ children }: { children: ReactNode }) => {
   const [content, setContent] = useState<ContentData>(initialContent);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const savedContent = localStorage.getItem('sss_engineering_content');
+    if (savedContent) {
+      try {
+        setContent(JSON.parse(savedContent));
+      } catch (e) {
+        console.error("Failed to parse saved content", e);
+      }
+    }
+    setIsLoaded(true);
+  }, []);
 
   const updateContent = (newContent: Partial<ContentData>) => {
-    setContent(prev => ({ ...prev, ...newContent }));
+    setContent(prev => {
+      const updated = { ...prev, ...newContent };
+      localStorage.setItem('sss_engineering_content', JSON.stringify(updated));
+      return updated;
+    });
   };
+
+  if (!isLoaded) return null;
 
   return (
     <ContentContext.Provider value={{ content, updateContent }}>
