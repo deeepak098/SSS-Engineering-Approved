@@ -1,3 +1,4 @@
+
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import Image from 'next/image';
@@ -17,6 +18,7 @@ export default function AboutPage() {
               alt="About SSS Engineering"
               fill
               className="object-cover"
+              data-ai-hint={aboutImage.imageHint}
             />
           )}
           <div className="absolute inset-0 bg-black/60" />

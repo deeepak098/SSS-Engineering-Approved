@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from 'next/image';
@@ -17,6 +18,7 @@ export function Logistics() {
             alt="World Map Background"
             fill
             className="object-contain"
+            data-ai-hint={mapImage.imageHint}
           />
         )}
       </div>

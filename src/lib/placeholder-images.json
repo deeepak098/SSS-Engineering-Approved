@@ -2,63 +2,63 @@
   "placeholderImages": [
     {
       "id": "hero-bg",
-      "description": "Large scale industrial manufacturing plant with modern equipment",
-      "imageUrl": "https://picsum.photos/seed/eng_hero/1920/1080",
+      "description": "Modern industrial manufacturing facility interior",
+      "imageUrl": "https://picsum.photos/seed/industrial_hero_99/1920/1080",
       "imageHint": "industrial factory"
     },
     {
       "id": "product-1",
-      "description": "High-precision hydraulic molding machine",
-      "imageUrl": "https://picsum.photos/seed/eng_prod1/600/400",
-      "imageHint": "molding machinery"
+      "description": "Precision CNC molding machinery",
+      "imageUrl": "https://picsum.photos/seed/molding_machine_88/600/400",
+      "imageHint": "precision machinery"
     },
     {
       "id": "product-2",
-      "description": "Automated industrial packaging conveyor line",
-      "imageUrl": "https://picsum.photos/seed/eng_prod2/600/400",
-      "imageHint": "packaging conveyor"
+      "description": "Automated industrial conveyor system",
+      "imageUrl": "https://picsum.photos/seed/conveyor_system_77/600/400",
+      "imageHint": "automated conveyor"
     },
     {
       "id": "product-3",
-      "description": "Large stainless steel industrial mixing tank",
-      "imageUrl": "https://picsum.photos/seed/eng_prod3/600/400",
+      "description": "Large scale industrial mixing unit",
+      "imageUrl": "https://picsum.photos/seed/mixing_tank_66/600/400",
       "imageHint": "industrial mixer"
     },
     {
       "id": "egg-tray-hero",
-      "description": "Stacks of high-quality recycled paper egg trays",
-      "imageUrl": "https://picsum.photos/seed/eng_egg/800/600",
+      "description": "Eco-friendly recycled paper egg packaging",
+      "imageUrl": "https://picsum.photos/seed/egg_packaging_55/800/600",
       "imageHint": "egg trays"
     },
     {
       "id": "global-map",
-      "description": "Abstract global logistics and shipping route network",
-      "imageUrl": "https://picsum.photos/seed/eng_map/1200/600",
-      "imageHint": "global logistics"
+      "description": "World map with logistics network connections",
+      "imageUrl": "https://picsum.photos/seed/logistics_map_44/1200/600",
+      "imageHint": "world map"
     },
     {
       "id": "sustainability",
-      "description": "Modern eco-friendly factory with rooftop solar panels",
-      "imageUrl": "https://picsum.photos/seed/eng_eco/1000/600",
-      "imageHint": "sustainable manufacturing"
+      "description": "Sustainable factory with solar panel installation",
+      "imageUrl": "https://picsum.photos/seed/solar_factory_33/1000/600",
+      "imageHint": "solar factory"
     },
     {
       "id": "blog-1",
-      "description": "Macro shot of sustainable recycled paper pulp texture",
-      "imageUrl": "https://picsum.photos/seed/eng_blog1/800/500",
+      "description": "Close up of recycled paper pulp texture",
+      "imageUrl": "https://picsum.photos/seed/recycled_pulp_22/800/500",
       "imageHint": "recycled paper"
     },
     {
       "id": "blog-2",
-      "description": "Precision mechanical engineering blueprint and components",
-      "imageUrl": "https://picsum.photos/seed/eng_blog2/800/500",
-      "imageHint": "mechanical engineering"
+      "description": "Engineering blueprints and mechanical parts",
+      "imageUrl": "https://picsum.photos/seed/engineering_design_11/800/500",
+      "imageHint": "engineering design"
     },
     {
       "id": "blog-3",
-      "description": "Clean energy wind turbines in an industrial setting",
-      "imageUrl": "https://picsum.photos/seed/eng_blog3/800/500",
-      "imageHint": "clean energy"
+      "description": "Clean energy wind turbines and industrial infrastructure",
+      "imageUrl": "https://picsum.photos/seed/wind_turbines_00/800/500",
+      "imageHint": "wind turbines"
     }
   ]
 }
