@@ -5,9 +5,19 @@ import { Search, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const navItems = [
+    { name: 'Products', href: '/products' },
+    { name: 'Sustainability', href: '/sustainability' },
+    { name: 'Logistics', href: '/logistics' },
+    { name: 'Blogs', href: '/blogs' },
+    { name: 'About', href: '/about' },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-border shadow-sm">
@@ -20,13 +30,16 @@ export function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            {['Products', 'Sustainability', 'Logistics', 'Blogs', 'About'].map((item) => (
+            {navItems.map((item) => (
               <Link
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary",
+                  pathname === item.href ? "text-primary underline underline-offset-4" : "text-foreground"
+                )}
               >
-                {item}
+                {item.name}
               </Link>
             ))}
           </nav>
@@ -35,8 +48,8 @@ export function Header() {
             <button className="p-2 hover:bg-muted rounded-full transition-colors hidden md:block" aria-label="Search">
               <Search className="h-5 w-5 text-foreground" />
             </button>
-            <Button className="hidden md:flex font-headline font-bold" size="lg">
-              CONTACT US
+            <Button className="hidden md:flex font-headline font-bold" size="lg" asChild>
+              <Link href="/#contact">CONTACT US</Link>
             </Button>
             <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -51,17 +64,22 @@ export function Header() {
         isOpen ? "translate-x-0" : "translate-x-full"
       )}>
         <nav className="flex flex-col p-8 space-y-6">
-          {['Products', 'Sustainability', 'Logistics', 'Blogs', 'About'].map((item) => (
+          {navItems.map((item) => (
             <Link
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-xl font-headline font-semibold text-foreground border-b pb-2"
+              key={item.name}
+              href={item.href}
+              className={cn(
+                "text-xl font-headline font-semibold border-b pb-2",
+                pathname === item.href ? "text-primary border-primary" : "text-foreground border-border"
+              )}
               onClick={() => setIsOpen(false)}
             >
-              {item}
+              {item.name}
             </Link>
           ))}
-          <Button className="w-full font-headline font-bold py-6">CONTACT US</Button>
+          <Button className="w-full font-headline font-bold py-6" asChild>
+             <Link href="/#contact" onClick={() => setIsOpen(false)}>CONTACT US</Link>
+          </Button>
         </nav>
       </div>
     </header>
