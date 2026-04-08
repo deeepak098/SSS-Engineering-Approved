@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-bg",
-      "description": "Modern industrial manufacturing facility interior",
-      "imageUrl": "https://picsum.photos/seed/industrial_hero_99/1920/1080",
-      "imageHint": "industrial factory"
+      "description": "Intricate industrial gears and mechanical machinery parts",
+      "imageUrl": "https://picsum.photos/seed/industrial_gears_machinery/1920/1080",
+      "imageHint": "industrial gears"
     },
     {
       "id": "product-1",
