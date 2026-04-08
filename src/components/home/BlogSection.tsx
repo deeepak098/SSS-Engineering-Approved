@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from 'next/image';
@@ -34,6 +35,7 @@ export function BlogSection() {
                       alt={imgData.description}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      data-ai-hint={imgData.imageHint}
                     />
                   )}
                   <div className="absolute top-4 left-4">

@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from 'next/image';
@@ -18,7 +19,7 @@ export function Hero() {
           fill
           priority
           className="object-cover"
-          data-ai-hint="industrial machinery"
+          data-ai-hint={heroImage.imageHint}
         />
       )}
       <div className="absolute inset-0 bg-black/60" />

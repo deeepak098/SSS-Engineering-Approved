@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from 'next/image';
@@ -39,6 +40,7 @@ export function ProductGrid() {
                       alt={imgData.description}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      data-ai-hint={imgData.imageHint}
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

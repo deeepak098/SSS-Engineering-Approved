@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from 'next/image';
@@ -20,7 +21,7 @@ export function EggTrayFeatures() {
                 alt={eggTrayImage.description}
                 fill
                 className="object-cover"
-                data-ai-hint="egg trays"
+                data-ai-hint={eggTrayImage.imageHint}
               />
             )}
           </div>

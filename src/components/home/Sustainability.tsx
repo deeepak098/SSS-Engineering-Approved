@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from 'next/image';
@@ -20,6 +21,7 @@ export function Sustainability() {
                 alt={sustainImage.description}
                 fill
                 className="object-cover"
+                data-ai-hint={sustainImage.imageHint}
               />
             )}
             <div className="absolute inset-0 bg-primary/20" />
