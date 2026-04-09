@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from 'next/image';
@@ -14,7 +15,7 @@ export function BlogSection() {
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="font-headline font-extrabold text-4xl md:text-5xl text-foreground">
-            Insights & <span className="text-primary">Innovation</span>
+            Our <span className="text-primary">Blogs</span>
           </h2>
           <p className="text-muted-foreground text-lg font-body">
             Stay updated with the latest trends in engineering, sustainable manufacturing, and global logistics.

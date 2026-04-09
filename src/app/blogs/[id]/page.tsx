@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useParams } from 'next/navigation';
@@ -23,9 +24,9 @@ export default function BlogPostPage() {
         <main className="flex-1 flex items-center justify-center p-8 text-center bg-muted/20">
           <div className="space-y-6 max-w-md">
             <h1 className="text-4xl font-headline font-extrabold text-foreground">Blog Post Not Found</h1>
-            <p className="text-muted-foreground font-body">The article you're looking for might have been moved or removed from our insights archive.</p>
+            <p className="text-muted-foreground font-body">The article you're looking for might have been moved or removed from our archive.</p>
             <Button asChild size="lg" className="font-headline font-bold">
-              <Link href="/blogs">EXPLORE OTHER ARTICLES</Link>
+              <Link href="/blogs">EXPLORE OTHER BLOGS</Link>
             </Button>
           </div>
         </main>
@@ -47,7 +48,7 @@ export default function BlogPostPage() {
           <div className="space-y-12">
             <div className="space-y-6">
               <Link href="/blogs" className="inline-flex items-center text-primary font-bold text-xs tracking-widest hover:underline uppercase font-headline">
-                <ArrowLeft className="mr-2 h-4 w-4" /> BACK TO ALL INSIGHTS
+                <ArrowLeft className="mr-2 h-4 w-4" /> BACK TO ALL BLOGS
               </Link>
               
               <div className="space-y-4">
@@ -126,7 +127,7 @@ export default function BlogPostPage() {
                 <div className="pt-12 border-t border-border mt-16">
                   <div className="bg-muted/30 p-8 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div className="space-y-1">
-                      <h4 className="font-headline font-bold text-xl text-foreground">Interested in these insights?</h4>
+                      <h4 className="font-headline font-bold text-xl text-foreground">Interested in these blogs?</h4>
                       <p className="text-muted-foreground font-body">Get a custom quote for our machinery solutions today.</p>
                     </div>
                     <Button asChild size="lg" className="bg-primary hover:bg-primary/90 font-headline font-bold px-10">

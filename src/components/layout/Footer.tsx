@@ -33,7 +33,7 @@ export function Footer() {
                 { name: 'Machinery', href: '/products' },
                 { name: 'Services', href: '/services' },
                 { name: 'Logistics', href: '/logistics' },
-                { name: 'Industry Insights', href: '/blogs' },
+                { name: 'Blogs', href: '/blogs' },
                 { name: 'About SSS', href: '/about' }
               ].map((link) => (
                 <li key={link.name}>

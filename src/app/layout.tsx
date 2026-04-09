@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     'precision manufacturing',
     'industrial export compliance',
     'machine design services',
-    'technical industry guides'
+    'technical industry blogs'
   ],
   authors: [{ name: 'SSS Engineering Editorial Team' }],
   creator: 'SSS Engineering Solutions',
