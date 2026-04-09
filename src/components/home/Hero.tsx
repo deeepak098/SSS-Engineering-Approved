@@ -11,7 +11,7 @@ export function Hero() {
     <section className="relative h-[600px] md:h-[800px] w-full flex items-center justify-center overflow-hidden">
       <Image
         src={content.hero.imageUrl}
-        alt={content.hero.imageHint}
+        alt={content.hero.title}
         fill
         priority
         className="object-cover"
