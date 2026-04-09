@@ -34,6 +34,7 @@ type ContentData = {
     cta: string;
     imageUrl: string;
     imageHint: string;
+    altText: string;
   };
   stats: StatItem[];
   products: {
@@ -42,6 +43,7 @@ type ContentData = {
     description: string;
     imageUrl: string;
     imageHint: string;
+    altText: string;
     specs: ProductSpec;
   }[];
   services: ServiceItem[];
@@ -52,6 +54,7 @@ type ContentData = {
     date: string;
     imageUrl: string;
     imageHint: string;
+    altText: string;
     category: string;
   }[];
   logistics: {
@@ -59,11 +62,13 @@ type ContentData = {
     description: string;
     imageUrl: string;
     imageHint: string;
+    altText: string;
     features: LogisticsFeature[];
   };
   about: {
     imageUrl: string;
     imageHint: string;
+    altText: string;
   };
 };
 
@@ -73,7 +78,8 @@ const initialContent: ContentData = {
     description: "Leading manufacturer and exporter of high-precision engineering machinery and recycled paper products globally.",
     cta: "Explore Our Solutions",
     imageUrl: "https://thumbs.dreamstime.com/b/complex-network-industrial-pipelines-valves-machinery-inside-chemical-plant-interconnected-metal-pipes-processing-437487093.jpg",
-    imageHint: "industrial gears"
+    imageHint: "industrial gears",
+    altText: "High-precision industrial machinery network with complex pipelines and valves"
   },
   stats: [
     { label: "Years Experience", value: "15+" },
@@ -88,6 +94,7 @@ const initialContent: ContentData = {
       description: "High-speed rotary pulp molding for large-scale production. Fully automatic with PLC control.", 
       imageUrl: "https://npcinjection.usa72.wondercdn.com/uploads/image/61adb22913863.jpg",
       imageHint: "rotary machine",
+      altText: "Industrial rotary egg tray molding machine for large scale production",
       specs: {
         capacity: "3,000-5,000 trays/hr",
         power: "45-90 kW",
@@ -100,6 +107,7 @@ const initialContent: ContentData = {
       description: "Compact 3-mold egg tray machine ideal for small to mid-scale production. Low investment, easy operation, and quick ROI.", 
       imageUrl: "https://sdcautomation.com/wp-content/uploads/2025/01/sdc-machine-3.webp",
       imageHint: "green machinery",
+      altText: "Compact green industrial egg tray production machinery",
       specs: {
         capacity: "1,000-1,500 trays/hr",
         power: "22-45 kW",
@@ -112,6 +120,7 @@ const initialContent: ContentData = {
       description: "Industrial-grade mixing unit for consistent pulp preparation. Engineered for durability and high-performance throughput.", 
       imageUrl: "https://www.ifa-technology.net/fileadmin/_processed_/4/d/csm_Inline_mixer_Inline-Mischer_1_0b5d650e11.jpg",
       imageHint: "industrial mixer",
+      altText: "High-capacity industrial pulp mixing and preparation unit",
       specs: {
         capacity: "8,000 L/hr",
         power: "55 kW",
@@ -153,6 +162,7 @@ const initialContent: ContentData = {
       date: "May 15, 2024",
       imageUrl: "https://picsum.photos/seed/recycled_pulp_22/800/500",
       imageHint: "recycled paper",
+      altText: "Texture of recycled paper pulp used in sustainable packaging",
       category: "Sustainability"
     },
     {
@@ -162,6 +172,7 @@ const initialContent: ContentData = {
       date: "June 02, 2024",
       imageUrl: "https://picsum.photos/seed/engineering_design_11/800/500",
       imageHint: "engineering design",
+      altText: "Technical engineering blueprints and mechanical design elements",
       category: "Engineering"
     },
     {
@@ -171,6 +182,7 @@ const initialContent: ContentData = {
       date: "June 20, 2024",
       imageUrl: "https://picsum.photos/seed/wind_turbines_00/800/500",
       imageHint: "wind turbines",
+      altText: "Industrial infrastructure and clean energy wind turbines",
       category: "Logistics"
     },
     {
@@ -180,6 +192,7 @@ const initialContent: ContentData = {
       date: "July 12, 2024",
       imageUrl: "https://picsum.photos/seed/pulp_guide/800/500",
       imageHint: "industry guide",
+      altText: "Detailed overview of industrial pulp molding processes",
       category: "Industry Guides"
     }
   ],
@@ -188,6 +201,7 @@ const initialContent: ContentData = {
     description: "Reliable international shipping with end-to-end export support for machinery and finished egg trays. We manage the complexity of global trade so you can focus on production.",
     imageUrl: "https://img.etimg.com/thumb/width-1200,height-900,imgsize-143762,resizemode-75,msid-120791589/news/economy/foreign-trade/comm-mins-export-promotion-mission-may-have-12-point-plan-to-push-exports-help-msme-exporters.jpg",
     imageHint: "logistics port",
+    altText: "Global shipping port with containers ready for international export",
     features: [
       { 
         title: "30+ Countries", 
@@ -213,7 +227,8 @@ const initialContent: ContentData = {
   },
   about: {
     imageUrl: "https://picsum.photos/seed/industrial_gears_machinery/1920/1080",
-    imageHint: "industrial gears"
+    imageHint: "industrial gears",
+    altText: "Close-up of heavy industrial gears and precision mechanical engineering"
   }
 };
 
@@ -236,10 +251,11 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
         setContent(prev => ({
           ...initialContent,
           ...parsed,
-          logistics: {
-            ...initialContent.logistics,
-            ...(parsed.logistics || {})
-          },
+          hero: { ...initialContent.hero, ...(parsed.hero || {}) },
+          about: { ...initialContent.about, ...(parsed.about || {}) },
+          logistics: { ...initialContent.logistics, ...(parsed.logistics || {}) },
+          products: parsed.products || initialContent.products,
+          blogs: parsed.blogs || initialContent.blogs,
           services: parsed.services || initialContent.services
         }));
       } catch (e) {

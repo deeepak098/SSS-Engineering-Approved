@@ -1,8 +1,10 @@
+
 "use client"
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useContent } from '@/context/ContentContext';
+import Link from 'next/link';
 
 export function Hero() {
   const { content } = useContent();
@@ -11,7 +13,7 @@ export function Hero() {
     <section className="relative h-[600px] md:h-[800px] w-full flex items-center justify-center overflow-hidden">
       <Image
         src={content.hero.imageUrl}
-        alt={content.hero.title}
+        alt={content.hero.altText || content.hero.title}
         fill
         priority
         className="object-cover"
@@ -21,18 +23,18 @@ export function Hero() {
       
       <div className="container relative z-10 mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          <h1 className="font-headline font-extrabold text-4xl md:text-6xl lg:text-7xl text-white leading-tight">
+          <h1 className="font-headline font-extrabold text-4xl md:text-6xl lg:text-7xl text-white leading-tight uppercase tracking-tighter">
             {content.hero.title}
           </h1>
           <p className="text-xl md:text-2xl text-white/80 font-body max-w-2xl mx-auto">
             {content.hero.description}
           </p>
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="font-headline font-bold px-10 py-7 text-lg bg-primary hover:bg-primary/90">
-              {content.hero.cta}
+            <Button size="lg" className="font-headline font-bold px-10 py-7 text-lg bg-primary hover:bg-primary/90 rounded-none tracking-widest" asChild>
+              <Link href="/contact">{content.hero.cta}</Link>
             </Button>
-            <Button size="lg" variant="outline" className="font-headline font-bold px-10 py-7 text-lg text-white border-white bg-transparent hover:bg-white/10">
-              LEARN MORE
+            <Button size="lg" variant="outline" className="font-headline font-bold px-10 py-7 text-lg text-white border-white bg-transparent hover:bg-white/10 rounded-none tracking-widest" asChild>
+              <Link href="/products">LEARN MORE</Link>
             </Button>
           </div>
         </div>

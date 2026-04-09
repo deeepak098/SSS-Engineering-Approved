@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
-import { Save, ArrowLeft, LayoutDashboard, Package, ImageIcon, BarChart3, Ship, Settings } from 'lucide-react';
+import { Save, ArrowLeft, LayoutDashboard, Package, ImageIcon, BarChart3, Ship, Settings, FileText } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminPage() {
@@ -38,37 +38,40 @@ export default function AdminPage() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div className="space-y-1">
-              <h1 className="font-headline font-extrabold text-3xl text-foreground flex items-center gap-2">
+              <h1 className="font-headline font-extrabold text-3xl text-foreground flex items-center gap-2 uppercase tracking-tight">
                 <LayoutDashboard className="h-8 w-8 text-primary" />
                 Admin Dashboard
               </h1>
-              <p className="text-muted-foreground font-body">Manage site content, machinery specs, and global logistics features.</p>
+              <p className="text-muted-foreground font-body">Manage site content, machinery specs, SEO tags, and global logistics.</p>
             </div>
             <div className="flex items-center gap-3">
-              <Button variant="outline" asChild className="font-headline font-bold">
+              <Button variant="outline" asChild className="font-headline font-bold rounded-none tracking-widest uppercase text-xs">
                 <Link href="/" className="flex items-center gap-2">
                   <ArrowLeft className="h-4 w-4" /> View Site
                 </Link>
               </Button>
-              <Button onClick={handleSave} className="font-headline font-bold flex items-center gap-2 bg-primary hover:bg-primary/90">
+              <Button onClick={handleSave} className="font-headline font-bold flex items-center gap-2 bg-primary hover:bg-primary/90 rounded-none tracking-widest uppercase text-xs">
                 <Save className="h-4 w-4" /> Save All Changes
               </Button>
             </div>
           </div>
 
           <Tabs defaultValue="products" className="space-y-6">
-            <TabsList className="bg-white border w-full justify-start h-auto p-1 flex-wrap overflow-x-auto">
-              <TabsTrigger value="hero" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5 font-headline text-xs font-bold uppercase tracking-wider">
+            <TabsList className="bg-white border w-full justify-start h-auto p-1 flex-wrap overflow-x-auto rounded-none">
+              <TabsTrigger value="hero" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5 font-headline text-xs font-bold uppercase tracking-widest rounded-none">
                 <ImageIcon className="h-4 w-4 mr-2" /> Hero
               </TabsTrigger>
-              <TabsTrigger value="stats" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5 font-headline text-xs font-bold uppercase tracking-wider">
+              <TabsTrigger value="stats" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5 font-headline text-xs font-bold uppercase tracking-widest rounded-none">
                 <BarChart3 className="h-4 w-4 mr-2" /> Stats
               </TabsTrigger>
-              <TabsTrigger value="products" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5 font-headline text-xs font-bold uppercase tracking-wider">
+              <TabsTrigger value="products" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5 font-headline text-xs font-bold uppercase tracking-widest rounded-none">
                 <Package className="h-4 w-4 mr-2" /> Products
               </TabsTrigger>
-              <TabsTrigger value="logistics" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5 font-headline text-xs font-bold uppercase tracking-wider">
+              <TabsTrigger value="logistics" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5 font-headline text-xs font-bold uppercase tracking-widest rounded-none">
                 <Ship className="h-4 w-4 mr-2" /> Logistics
+              </TabsTrigger>
+              <TabsTrigger value="blogs" className="data-[state=active]:bg-primary data-[state=active]:text-white px-6 py-2.5 font-headline text-xs font-bold uppercase tracking-widest rounded-none">
+                <FileText className="h-4 w-4 mr-2" /> Blogs
               </TabsTrigger>
             </TabsList>
 
@@ -107,8 +110,8 @@ export default function AdminPage() {
                 </Card>
                 <Card className="border-none shadow-sm rounded-none">
                   <CardHeader className="border-b">
-                    <CardTitle className="font-headline font-bold text-lg uppercase tracking-tight">Image Assets</CardTitle>
-                    <CardDescription className="font-body">Manage high-resolution industrial backgrounds.</CardDescription>
+                    <CardTitle className="font-headline font-bold text-lg uppercase tracking-tight">Hero Media & SEO</CardTitle>
+                    <CardDescription className="font-body">Manage industrial background assets and alt tags.</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6 pt-6">
                     <div className="space-y-2">
@@ -126,14 +129,15 @@ export default function AdminPage() {
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-headline font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                        <ImageIcon className="h-3 w-3" /> About Page Image URL
+                        <FileText className="h-3 w-3" /> SEO Alt Text
                       </label>
                       <Input 
                         className="rounded-none border-border"
-                        value={formData.about.imageUrl} 
+                        placeholder="Describe the image for SEO"
+                        value={formData.hero.altText} 
                         onChange={(e) => setFormData({
                           ...formData, 
-                          about: { ...formData.about, imageUrl: e.target.value }
+                          hero: { ...formData.hero, altText: e.target.value }
                         })} 
                       />
                     </div>
@@ -187,7 +191,7 @@ export default function AdminPage() {
               <Card className="border-none shadow-sm rounded-none">
                 <CardHeader className="border-b">
                   <CardTitle className="font-headline font-bold text-lg uppercase tracking-tight">Machinery & Product Management</CardTitle>
-                  <CardDescription className="font-body">Configure technical specifications and media for industrial products.</CardDescription>
+                  <CardDescription className="font-body">Configure technical specifications, SEO alt tags, and media for industrial products.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 pt-6">
                   <div className="grid grid-cols-1 gap-6">
@@ -219,6 +223,19 @@ export default function AdminPage() {
                               onChange={(e) => {
                                 const newProducts = [...formData.products];
                                 newProducts[idx].imageUrl = e.target.value;
+                                setFormData({ ...formData, products: newProducts });
+                              }} 
+                            />
+                          </div>
+                          <div className="space-y-2 md:col-span-2">
+                            <label className="text-xs font-headline font-bold text-muted-foreground uppercase tracking-widest">SEO Alt Text</label>
+                            <Input 
+                              className="rounded-none border-primary/20"
+                              placeholder="Describe this machine for accessibility"
+                              value={p.altText} 
+                              onChange={(e) => {
+                                const newProducts = [...formData.products];
+                                newProducts[idx].altText = e.target.value;
                                 setFormData({ ...formData, products: newProducts });
                               }} 
                             />
@@ -315,6 +332,18 @@ export default function AdminPage() {
                         })} 
                       />
                     </div>
+                    <div className="space-y-2 md:col-span-2">
+                      <label className="text-xs font-headline font-bold text-muted-foreground uppercase tracking-widest">SEO Alt Text</label>
+                      <Input 
+                        className="rounded-none border-primary/20"
+                        placeholder="Describe the logistics image"
+                        value={formData.logistics.altText} 
+                        onChange={(e) => setFormData({
+                          ...formData, 
+                          logistics: { ...formData.logistics, altText: e.target.value }
+                        })} 
+                      />
+                    </div>
                     <div className="md:col-span-2 space-y-2">
                       <label className="text-xs font-headline font-bold text-muted-foreground uppercase tracking-widest">Section Overview Text</label>
                       <Textarea 
@@ -370,6 +399,84 @@ export default function AdminPage() {
                       ))}
                     </div>
                   </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            <TabsContent value="blogs">
+              <Card className="border-none shadow-sm rounded-none">
+                <CardHeader className="border-b">
+                  <CardTitle className="font-headline font-bold text-lg uppercase tracking-tight">Blog & Article Management</CardTitle>
+                  <CardDescription className="font-body">Manage educational content, industry guides, and SEO metadata.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6 pt-6">
+                  {formData.blogs.map((blog, idx) => (
+                    <div key={blog.id} className="p-6 border rounded-none bg-muted/10 space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label className="text-xs font-headline font-bold text-muted-foreground uppercase tracking-widest">Article Title</label>
+                          <Input 
+                            className="rounded-none"
+                            value={blog.title} 
+                            onChange={(e) => {
+                              const newBlogs = [...formData.blogs];
+                              newBlogs[idx].title = e.target.value;
+                              setFormData({ ...formData, blogs: newBlogs });
+                            }} 
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-xs font-headline font-bold text-muted-foreground uppercase tracking-widest">Category</label>
+                          <Input 
+                            className="rounded-none"
+                            value={blog.category} 
+                            onChange={(e) => {
+                              const newBlogs = [...formData.blogs];
+                              newBlogs[idx].category = e.target.value;
+                              setFormData({ ...formData, blogs: newBlogs });
+                            }} 
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-xs font-headline font-bold text-muted-foreground uppercase tracking-widest">Image URL</label>
+                          <Input 
+                            className="rounded-none"
+                            value={blog.imageUrl} 
+                            onChange={(e) => {
+                              const newBlogs = [...formData.blogs];
+                              newBlogs[idx].imageUrl = e.target.value;
+                              setFormData({ ...formData, blogs: newBlogs });
+                            }} 
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-xs font-headline font-bold text-muted-foreground uppercase tracking-widest">SEO Alt Text</label>
+                          <Input 
+                            className="rounded-none border-primary/20"
+                            placeholder="Alt text for accessibility"
+                            value={blog.altText} 
+                            onChange={(e) => {
+                              const newBlogs = [...formData.blogs];
+                              newBlogs[idx].altText = e.target.value;
+                              setFormData({ ...formData, blogs: newBlogs });
+                            }} 
+                          />
+                        </div>
+                        <div className="md:col-span-2 space-y-2">
+                          <label className="text-xs font-headline font-bold text-muted-foreground uppercase tracking-widest">Excerpt</label>
+                          <Textarea 
+                            className="rounded-none"
+                            value={blog.excerpt} 
+                            onChange={(e) => {
+                              const newBlogs = [...formData.blogs];
+                              newBlogs[idx].excerpt = e.target.value;
+                              setFormData({ ...formData, blogs: newBlogs });
+                            }} 
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </CardContent>
               </Card>
             </TabsContent>

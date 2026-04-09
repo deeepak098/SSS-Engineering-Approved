@@ -33,7 +33,7 @@ export function Logistics() {
         <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden shadow-md border border-border">
           <Image
             src={content.logistics.imageUrl}
-            alt="Global Export Logistics"
+            alt={content.logistics.altText || "Global Export Logistics Port"}
             fill
             className="object-cover"
             data-ai-hint={content.logistics.imageHint}
