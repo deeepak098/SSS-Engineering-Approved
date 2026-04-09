@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   },
   description: 'Global leader in high-performance pulp molding machines, egg tray machinery, and sustainable industrial solutions. Expert machine design, global export logistics, and technical consulting since 1995.',
   keywords: [
+    'industrial machinery supplier',
+    'industrial machinery exporter',
+    'heavy machinery exporter',
+    'industrial equipment supplier',
+    'machinery export company',
     'pulp molding machine',
     'egg tray machine manufacturer',
     'industrial machinery',
