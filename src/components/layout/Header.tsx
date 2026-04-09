@@ -14,10 +14,10 @@ export function Header() {
 
   const navItems = [
     { name: 'Products', href: '/products' },
+    { name: 'Services', href: '/services' },
     { name: 'Logistics', href: '/logistics' },
-    { name: 'Blogs', href: '/blogs' },
+    { name: 'Insights', href: '/blogs' },
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -36,8 +36,8 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
-                  pathname === item.href ? "text-primary underline underline-offset-4" : "text-foreground"
+                  "text-xs font-bold uppercase tracking-widest transition-colors hover:text-primary",
+                  pathname === item.href ? "text-primary border-b-2 border-primary pb-1" : "text-foreground"
                 )}
               >
                 {item.name}
@@ -49,7 +49,7 @@ export function Header() {
             <button className="p-2 hover:bg-muted rounded-full transition-colors hidden md:block" aria-label="Search">
               <Search className="h-5 w-5 text-foreground" />
             </button>
-            <Button className="hidden md:flex font-headline font-bold" size="lg" asChild>
+            <Button className="hidden md:flex font-headline font-bold bg-primary hover:bg-primary/90 text-white rounded-none tracking-widest text-xs" size="lg" asChild>
               <Link href="/contact">CONTACT US</Link>
             </Button>
             <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
@@ -70,7 +70,7 @@ export function Header() {
               key={item.name}
               href={item.href}
               className={cn(
-                "text-xl font-headline font-semibold border-b pb-2",
+                "text-xl font-headline font-bold border-b pb-2 uppercase tracking-tighter",
                 pathname === item.href ? "text-primary border-primary" : "text-foreground border-border"
               )}
               onClick={() => setIsOpen(false)}
@@ -78,7 +78,7 @@ export function Header() {
               {item.name}
             </Link>
           ))}
-          <Button className="w-full font-headline font-bold py-6" asChild>
+          <Button className="w-full font-headline font-bold py-6 rounded-none tracking-widest uppercase" asChild>
              <Link href="/contact" onClick={() => setIsOpen(false)}>CONTACT US</Link>
           </Button>
         </nav>

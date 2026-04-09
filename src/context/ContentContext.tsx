@@ -20,6 +20,13 @@ type LogisticsFeature = {
   iconName: 'Globe' | 'Ship' | 'ShieldCheck' | 'FileCheck';
 };
 
+type ServiceItem = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+};
+
 type ContentData = {
   hero: {
     title: string;
@@ -37,6 +44,7 @@ type ContentData = {
     imageHint: string;
     specs: ProductSpec;
   }[];
+  services: ServiceItem[];
   blogs: {
     id: number;
     title: string;
@@ -111,6 +119,32 @@ const initialContent: ContentData = {
       }
     }
   ],
+  services: [
+    {
+      id: 'design',
+      title: 'Machine Design & Engineering',
+      description: 'Custom engineering solutions tailored to specific production requirements and spatial constraints.',
+      icon: 'Settings'
+    },
+    {
+      id: 'logistics',
+      title: 'Global Logistics Management',
+      description: 'End-to-end shipping solutions including customs clearance and door-to-port delivery coordination.',
+      icon: 'Ship'
+    },
+    {
+      id: 'installation',
+      title: 'Installation & Commissioning',
+      description: 'On-site technical support to ensure your machinery is installed correctly and operating at peak efficiency.',
+      icon: 'Wrench'
+    },
+    {
+      id: 'support',
+      title: 'After-Sales & Maintenance',
+      description: 'Dedicated support team providing spare parts, remote troubleshooting, and routine maintenance guides.',
+      icon: 'Headphones'
+    }
+  ],
   blogs: [
     {
       id: 1,
@@ -132,38 +166,47 @@ const initialContent: ContentData = {
     },
     {
       id: 3,
-      title: "Global Supply Chain Resilience",
+      title: "Global Supply Chain Resilience Guide",
       excerpt: "How strategic logistics partnerships are helping manufacturers overcome international trade challenges in the modern era.",
       date: "June 20, 2024",
       imageUrl: "https://picsum.photos/seed/wind_turbines_00/800/500",
       imageHint: "wind turbines",
       category: "Logistics"
+    },
+    {
+      id: 4,
+      title: "Pulp Molding: Complete Industry Guide",
+      excerpt: "A comprehensive deep-dive into the technical processes, materials, and machinery required for modern pulp molding plants.",
+      date: "July 12, 2024",
+      imageUrl: "https://picsum.photos/seed/pulp_guide/800/500",
+      imageHint: "industry guide",
+      category: "Industry Guides"
     }
   ],
   logistics: {
     title: "Global Export & Logistics",
-    description: "Reliable international shipping with end-to-end export support for machinery and finished egg trays.",
+    description: "Reliable international shipping with end-to-end export support for machinery and finished egg trays. We manage the complexity of global trade so you can focus on production.",
     imageUrl: "https://img.etimg.com/thumb/width-1200,height-900,imgsize-143762,resizemode-75,msid-120791589/news/economy/foreign-trade/comm-mins-export-promotion-mission-may-have-12-point-plan-to-push-exports-help-msme-exporters.jpg",
     imageHint: "logistics port",
     features: [
       { 
         title: "30+ Countries", 
-        description: "Active exports across Africa, Middle East, South & Southeast Asia",
+        description: "Active exports across Africa, Middle East, South & Southeast Asia with localized support teams.",
         iconName: 'Globe'
       },
       { 
         title: "FOB & CIF Shipping", 
-        description: "Flexible shipping terms with containerized logistics",
+        description: "Flexible shipping terms (Free On Board or Cost, Insurance, and Freight) with containerized logistics.",
         iconName: 'Ship'
       },
       { 
         title: "ISO 9001 Certified", 
-        description: "Quality management systems for consistent output",
+        description: "Standardized quality management systems for consistent output and export-ready compliance.",
         iconName: 'ShieldCheck'
       },
       { 
         title: "Customs Documentation", 
-        description: "Full export documentation and compliance support",
+        description: "Full export documentation, certificates of origin, and compliance support for hassle-free clearance.",
         iconName: 'FileCheck'
       }
     ]
@@ -190,14 +233,14 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
     if (savedContent) {
       try {
         const parsed = JSON.parse(savedContent);
-        // Deep merge logic to ensure new keys like 'features' exist even if old data is in localStorage
         setContent(prev => ({
           ...initialContent,
           ...parsed,
           logistics: {
             ...initialContent.logistics,
             ...(parsed.logistics || {})
-          }
+          },
+          services: parsed.services || initialContent.services
         }));
       } catch (e) {
         console.error("Failed to parse saved content", e);

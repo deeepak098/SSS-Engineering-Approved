@@ -1,3 +1,4 @@
+
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -6,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/products',
+    '/services',
     '/logistics',
     '/blogs',
     '/about',
@@ -17,9 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1 : 0.8,
   }));
 
-  // In a real app, you would fetch blog IDs and add them here
-  // For this prototype, we'll add the existing blog IDs manually for SEO
-  const blogRoutes = [1, 2, 3].map((id) => ({
+  // Map existing blog entries
+  const blogRoutes = [1, 2, 3, 4].map((id) => ({
     url: `${baseUrl}/blogs/${id}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

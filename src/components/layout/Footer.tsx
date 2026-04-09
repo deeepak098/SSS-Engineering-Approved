@@ -13,12 +13,12 @@ export function Footer() {
                 SSS <span className="text-white">ENGINEERING</span>
               </span>
             </Link>
-            <p className="text-sm text-white/70 leading-relaxed max-w-xs">
-              Leading the way in industrial innovation and sustainable manufacturing since 1995.
+            <p className="text-sm text-white/70 leading-relaxed max-w-xs font-body">
+              Global leader in industrial innovation and sustainable pulp molding manufacturing since 1995.
             </p>
             <div className="flex space-x-4">
               {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
-                <Link key={i} href="#" className="p-2 bg-white/10 rounded-md hover:bg-primary transition-colors">
+                <Link key={i} href="#" className="p-2 bg-white/10 rounded-none hover:bg-primary transition-colors">
                   <Icon className="h-5 w-5" />
                 </Link>
               ))}
@@ -26,15 +26,15 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-headline font-bold text-lg mb-6 text-white">Quick Links</h4>
-            <ul className="space-y-4 text-sm text-white/70">
+            <h4 className="font-headline font-bold text-lg mb-6 text-white uppercase tracking-wider">Quick Links</h4>
+            <ul className="space-y-4 text-sm text-white/70 font-body">
               {[
                 { name: 'Home', href: '/' },
-                { name: 'Products', href: '/products' },
+                { name: 'Machinery', href: '/products' },
+                { name: 'Services', href: '/services' },
                 { name: 'Logistics', href: '/logistics' },
-                { name: 'Blogs', href: '/blogs' },
-                { name: 'About Us', href: '/about' },
-                { name: 'Contact', href: '/contact' }
+                { name: 'Industry Insights', href: '/blogs' },
+                { name: 'About SSS', href: '/about' }
               ].map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="hover:text-primary transition-colors">{link.name}</Link>
@@ -44,19 +44,25 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-headline font-bold text-lg mb-6 text-white">Our Services</h4>
-            <ul className="space-y-4 text-sm text-white/70">
-              {['Machine Design', 'Logistics Management', 'Custom Fabrication', 'Installation Services', 'After-Sales Support'].map((link) => (
+            <h4 className="font-headline font-bold text-lg mb-6 text-white uppercase tracking-wider">Our Services</h4>
+            <ul className="space-y-4 text-sm text-white/70 font-body">
+              {[
+                'Machine Design',
+                'Logistics Management',
+                'Custom Fabrication',
+                'Installation Services',
+                'After-Sales Support'
+              ].map((link) => (
                 <li key={link}>
-                  <Link href="#" className="hover:text-primary transition-colors">{link}</Link>
+                  <Link href="/services" className="hover:text-primary transition-colors">{link}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-headline font-bold text-lg mb-6 text-white">Contact Info</h4>
-            <ul className="space-y-4 text-sm text-white/70">
+            <h4 className="font-headline font-bold text-lg mb-6 text-white uppercase tracking-wider">Contact Info</h4>
+            <ul className="space-y-4 text-sm text-white/70 font-body">
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-primary shrink-0" />
                 <span>123 Industrial Hub, Suite 400, Silicon Valley, CA 94025</span>

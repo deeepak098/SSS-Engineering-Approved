@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { ContentProvider } from '@/context/ContentContext';
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
     default: 'SSS Engineering Solutions | Industrial Machinery & Sustainable Packaging',
     template: '%s | SSS Engineering Solutions',
   },
-  description: 'Global leader in high-performance pulp molding machines, egg tray machinery, and sustainable industrial solutions since 1995.',
+  description: 'Global leader in high-performance pulp molding machines, egg tray machinery, and sustainable industrial solutions. Expert machine design, global export logistics, and technical consulting since 1995.',
   keywords: [
     'pulp molding machine',
     'egg tray machine manufacturer',
@@ -18,6 +19,9 @@ export const metadata: Metadata = {
     'global logistics engineering',
     'SSS Engineering Solutions',
     'precision manufacturing',
+    'industrial export compliance',
+    'machine design services',
+    'technical industry guides'
   ],
   authors: [{ name: 'SSS Engineering Editorial Team' }],
   creator: 'SSS Engineering Solutions',
