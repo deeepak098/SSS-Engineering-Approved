@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Button } from '@/components/ui/button';
@@ -27,7 +28,17 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-headline font-bold text-lg">Main Headquarters</h4>
-                  <p className="text-muted-foreground">123 Industrial Hub, Silicon Valley, CA</p>
+                  <p className="text-muted-foreground">Vizag, Andhra Pradesh, India 530044</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4 p-6 bg-background rounded-2xl border border-border">
+                <div className="p-4 bg-primary rounded-xl shrink-0">
+                  <Phone className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-headline font-bold text-lg">Call Us</h4>
+                  <p className="text-muted-foreground">+91 9000058853</p>
                 </div>
               </div>
 

@@ -65,11 +65,11 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-white/70 font-body">
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-primary shrink-0" />
-                <span>123 Industrial Hub, Suite 400, Silicon Valley, CA 94025</span>
+                <span>Vizag, Andhra Pradesh, India 530044</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-primary shrink-0" />
-                <span>+1 (555) 012-3456</span>
+                <span>+91 9000058853</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
