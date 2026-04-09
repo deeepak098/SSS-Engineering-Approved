@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import './globals.css';
 import { ContentProvider } from '@/context/ContentContext';
@@ -26,7 +25,12 @@ export const metadata: Metadata = {
     'precision manufacturing',
     'industrial export compliance',
     'machine design services',
-    'technical industry blogs'
+    'technical industry blogs',
+    'industrial machinery supplier in India',
+    'heavy machinery exporter worldwide',
+    'industrial equipment supplier for factories',
+    'B2B machinery exporter India',
+    'industrial machines for manufacturing plants'
   ],
   authors: [{ name: 'SSS Engineering Editorial Team' }],
   creator: 'SSS Engineering Solutions',
