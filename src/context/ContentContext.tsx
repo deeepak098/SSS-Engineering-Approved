@@ -1,17 +1,23 @@
-
 "use client"
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type ProductSpec = {
-  capacity: string;
-  power: string;
-  molds: string;
+  capacity?: string;
+  power?: string;
+  molds?: string;
+  type?: string;
+  material?: string;
+  palletQty?: string;
+  moq?: string;
 };
 
 type StatItem = {
   label: string;
   value: string;
+  category: string;
+  businessTag: 'Paper Trays' | 'Machinery' | 'Global Reach' | 'Company';
+  iconName: 'Package' | 'Cog' | 'Globe' | 'Award';
 };
 
 type LogisticsFeature = {
@@ -27,6 +33,16 @@ type ServiceItem = {
   icon: string;
 };
 
+type ProductItem = {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  imageHint: string;
+  altText: string;
+  specs: ProductSpec;
+};
+
 type ContentData = {
   hero: {
     title: string;
@@ -37,15 +53,8 @@ type ContentData = {
     altText: string;
   };
   stats: StatItem[];
-  products: {
-    id: number;
-    title: string;
-    description: string;
-    imageUrl: string;
-    imageHint: string;
-    altText: string;
-    specs: ProductSpec;
-  }[];
+  products: ProductItem[];
+  eggTrayProducts: ProductItem[];
   services: ServiceItem[];
   blogs: {
     id: number;
@@ -74,24 +83,48 @@ type ContentData = {
 
 const initialContent: ContentData = {
   hero: {
-    title: "Innovating Industrial Solutions",
-    description: "Leading manufacturer and exporter of high-precision engineering machinery and recycled paper products globally.",
+    title: "INNOVATING INDUSTRIAL SOLUTIONS",
+    description: "Domestic manufacturer of premium recycled paper egg trays and global exporter of high-precision pulp molding machinery.",
     cta: "Explore Our Solutions",
     imageUrl: "https://thumbs.dreamstime.com/b/complex-network-industrial-pipelines-valves-machinery-inside-chemical-plant-interconnected-metal-pipes-processing-437487093.jpg",
-    imageHint: "industrial gears",
+    imageHint: "industrial factory machinery",
     altText: "High-precision industrial machinery network with complex pipelines and valves"
   },
   stats: [
-    { label: "Years Experience", value: "15+" },
-    { label: "Countries Exported", value: "30+" },
-    { label: "Tons Recycled/Year", value: "50K+" },
-    { label: "Machines Installed", value: "200+" }
+    {
+      label: "Years Experience",
+      value: "30+",
+      category: "COMPANY OVERVIEW",
+      businessTag: "Company",
+      iconName: "Award"
+    },
+    {
+      label: "Countries Exported",
+      value: "45+",
+      category: "GLOBAL EXPORT REACH",
+      businessTag: "Global Reach",
+      iconName: "Globe"
+    },
+    {
+      label: "Tons Recycled/Year",
+      value: "120K+",
+      category: "PAPER TRAY BUSINESS",
+      businessTag: "Paper Trays",
+      iconName: "Package"
+    },
+    {
+      label: "Machines Installed",
+      value: "850+",
+      category: "MACHINERY BUSINESS",
+      businessTag: "Machinery",
+      iconName: "Cog"
+    }
   ],
   products: [
-    { 
-      id: 1, 
-      title: "Rotary Egg Tray Machine", 
-      description: "High-speed rotary pulp molding for large-scale production. Fully automatic with PLC control.", 
+    {
+      id: 1,
+      title: "Rotary Egg Tray Machine",
+      description: "High-speed rotary pulp molding machine for large-scale industrial output. Fully automatic PLC control.",
       imageUrl: "https://npcinjection.usa72.wondercdn.com/uploads/image/61adb22913863.jpg",
       imageHint: "rotary machine",
       altText: "Industrial rotary egg tray molding machine for large scale production",
@@ -101,10 +134,10 @@ const initialContent: ContentData = {
         molds: "8-12 sides rotary"
       }
     },
-    { 
-      id: 2, 
-      title: "3 Mold Egg Tray Machine", 
-      description: "Compact 3-mold egg tray machine ideal for small to mid-scale production. Low investment, easy operation, and quick ROI.", 
+    {
+      id: 2,
+      title: "3 Mold Egg Tray Machine",
+      description: "Compact 3-mold egg tray machine for small to mid-scale operations. Low energy use with fast operational ROI.",
       imageUrl: "https://sdcautomation.com/wp-content/uploads/2025/01/sdc-machine-3.webp",
       imageHint: "green machinery",
       altText: "Compact green industrial egg tray production machinery",
@@ -114,10 +147,10 @@ const initialContent: ContentData = {
         molds: "3 molds"
       }
     },
-    { 
-      id: 3, 
-      title: "Pulp Mixing Unit", 
-      description: "Industrial-grade mixing unit for consistent pulp preparation. Engineered for durability and high-performance throughput.", 
+    {
+      id: 3,
+      title: "Pulp Mixing Unit",
+      description: "Heavy-duty industrial pulp mixing unit for consistent recycled pulp prep with automated density control.",
       imageUrl: "https://www.ifa-technology.net/fileadmin/_processed_/4/d/csm_Inline_mixer_Inline-Mischer_1_0b5d650e11.jpg",
       imageHint: "industrial mixer",
       altText: "High-capacity industrial pulp mixing and preparation unit",
@@ -125,6 +158,51 @@ const initialContent: ContentData = {
         capacity: "8,000 L/hr",
         power: "55 kW",
         molds: "N/A"
+      }
+    }
+  ],
+  // TODO (CLIENT SIGN-OFF REQUIRED): MOQ (10,000 / 15,000 / 5,000 Pcs) and Pallet Qty (4,800 / 3,600 / 2,400 Pcs) figures below require client verification prior to production launch.
+  eggTrayProducts: [
+    {
+      id: 101,
+      title: "Standard 30-Cell Egg Tray",
+      description: "High-density molded pulp 30-egg packaging trays engineered for impact absorption in transport and storage.",
+      imageUrl: "https://images.unsplash.com/photo-1582721478779-0ae163c05a60?auto=format&fit=crop&w=800&q=80",
+      imageHint: "egg tray paper packaging",
+      altText: "Recycled molded pulp 30-cell egg tray for poultry transport and storage",
+      specs: {
+        type: "30-Cell Standard",
+        material: "100% Recycled Pulp",
+        palletQty: "4,800 Pcs", // CLIENT SIGN-OFF NEEDED
+        moq: "10,000 Pcs"      // CLIENT SIGN-OFF NEEDED
+      }
+    },
+    {
+      id: 102,
+      title: "12-Egg Pulp Carton (Clamshell)",
+      description: "Retail-ready 12-hole egg carton with secure snap-lock closure and smooth surface for custom branding.",
+      imageUrl: "https://images.unsplash.com/photo-1587486913049-53fc88980cfc?auto=format&fit=crop&w=800&q=80",
+      imageHint: "egg carton container",
+      altText: "Protective molded paper 12-egg carton clamshell for retail sale",
+      specs: {
+        type: "12-Cell Clamshell",
+        material: "Recycled Paper",
+        palletQty: "3,600 Pcs", // CLIENT SIGN-OFF NEEDED
+        moq: "15,000 Pcs"      // CLIENT SIGN-OFF NEEDED
+      }
+    },
+    {
+      id: 103,
+      title: "Molded Fiber Industrial Tray",
+      description: "Custom molded fiber packaging trays designed for industrial components, fresh fruit, and fragile goods.",
+      imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+      imageHint: "industrial pulp packaging",
+      altText: "Heavy-duty custom molded fiber packaging tray for industrial goods",
+      specs: {
+        type: "Custom Fiber Mold",
+        material: "Heavy-Duty Pulp",
+        palletQty: "2,400 Pcs", // CLIENT SIGN-OFF NEEDED
+        moq: "5,000 Pcs"      // CLIENT SIGN-OFF NEEDED
       }
     }
   ],
@@ -203,23 +281,23 @@ const initialContent: ContentData = {
     imageHint: "logistics port",
     altText: "Global shipping port with containers ready for international export",
     features: [
-      { 
-        title: "30+ Countries", 
+      {
+        title: "30+ Countries",
         description: "Active exports across Africa, Middle East, South & Southeast Asia with localized support teams.",
         iconName: 'Globe'
       },
-      { 
-        title: "FOB & CIF Shipping", 
+      {
+        title: "FOB & CIF Shipping",
         description: "Flexible shipping terms (Free On Board or Cost, Insurance, and Freight) with containerized logistics.",
         iconName: 'Ship'
       },
-      { 
-        title: "ISO 9001 Certified", 
+      {
+        title: "ISO 9001 Certified",
         description: "Standardized quality management systems for consistent output and export-ready compliance.",
         iconName: 'ShieldCheck'
       },
-      { 
-        title: "Customs Documentation", 
+      {
+        title: "Customs Documentation",
         description: "Full export documentation, certificates of origin, and compliance support for hassle-free clearance.",
         iconName: 'FileCheck'
       }
@@ -244,7 +322,7 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const savedContent = localStorage.getItem('sss_engineering_content');
+    const savedContent = localStorage.getItem('sss_engineering_content_v5');
     if (savedContent) {
       try {
         const parsed = JSON.parse(savedContent);
@@ -255,6 +333,8 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
           about: { ...initialContent.about, ...(parsed.about || {}) },
           logistics: { ...initialContent.logistics, ...(parsed.logistics || {}) },
           products: parsed.products || initialContent.products,
+          eggTrayProducts: parsed.eggTrayProducts || initialContent.eggTrayProducts,
+          stats: parsed.stats || initialContent.stats,
           blogs: parsed.blogs || initialContent.blogs,
           services: parsed.services || initialContent.services
         }));
@@ -268,7 +348,7 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
   const updateContent = (newContent: Partial<ContentData>) => {
     setContent(prev => {
       const updated = { ...prev, ...newContent };
-      localStorage.setItem('sss_engineering_content', JSON.stringify(updated));
+      localStorage.setItem('sss_engineering_content_v5', JSON.stringify(updated));
       return updated;
     });
   };

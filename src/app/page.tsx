@@ -1,9 +1,9 @@
-
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/home/Hero';
 import { StatsSection } from '@/components/home/StatsSection';
 import { ProductGrid } from '@/components/home/ProductGrid';
+import { EggTrayGrid } from '@/components/home/EggTrayGrid';
 import { Logistics } from '@/components/home/Logistics';
 import { ContactSection } from '@/components/home/ContactSection';
 
@@ -15,6 +15,7 @@ export default function Home() {
         <Hero />
         <StatsSection />
         <ProductGrid />
+        <EggTrayGrid />
         <Logistics />
         <ContactSection />
       </main>

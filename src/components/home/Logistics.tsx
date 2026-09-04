@@ -1,4 +1,3 @@
-
 "use client"
 
 import Image from 'next/image';
@@ -15,49 +14,56 @@ const IconMap = {
 export function Logistics() {
   const { content } = useContent();
 
+  const features = content.logistics.features || [
+    { title: "Worldwide Shipping", description: "Direct export fulfillment to over 30 countries across Asia, Africa, and South America.", iconName: "Globe" },
+    { title: "FOB & CIF Terms", description: "Flexible global logistics management with complete freight handling and port insurance.", iconName: "Ship" },
+    { title: "Quality Certified", description: "ISO 9001 quality assurance compliance on all exported industrial machinery.", iconName: "ShieldCheck" },
+    { title: "Customs Clearance", description: "Complete documentation support including Certificates of Origin and CE compliance.", iconName: "FileCheck" },
+  ];
+
   return (
-    <section id="logistics" className="py-20 bg-[#f7f5f5]">
+    <section id="logistics" className="py-20 md:py-28 bg-[#F5F5F5] border-t border-border">
       <div className="container mx-auto px-4 md:px-8">
         {/* Section Heading */}
-        <div className="mb-10">
-          <div className="w-12 h-1.5 bg-primary mb-6" />
-          <h2 className="font-headline font-extrabold text-3xl md:text-4xl text-foreground mb-4 uppercase tracking-tight">
-            {content.logistics.title}
+        <div className="mb-12 space-y-4">
+          <div className="w-12 h-1.5 bg-primary" />
+          <h2 className="font-headline font-black text-3xl sm:text-4xl text-[#1A1A1A] uppercase tracking-tight">
+            {content.logistics.title || "Global Export & Logistics"}
           </h2>
-          <p className="text-muted-foreground text-base max-w-2xl leading-relaxed font-body">
-            {content.logistics.description}
+          <p className="text-neutral-600 text-base max-w-2xl leading-relaxed font-body">
+            {content.logistics.description || "End-to-end international freight management and logistics support delivering machinery safely across global ports."}
           </p>
         </div>
 
-        {/* Strategic Banner Image */}
-        <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden shadow-md border border-border">
+        {/* Full-width Landscape Photo */}
+        <div className="relative w-full h-[320px] md:h-[420px] overflow-hidden border border-border shadow-sm">
           <Image
-            src={content.logistics.imageUrl}
-            alt={content.logistics.altText || "Global Export Logistics Port"}
+            src={content.logistics.imageUrl || "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1600"}
+            alt={content.logistics.altText || "Global shipping port with cargo containers"}
             fill
             className="object-cover"
-            data-ai-hint={content.logistics.imageHint}
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
         </div>
 
-        {/* Feature Grid - Optimized Size */}
-        <div className="bg-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-x border-b border-border shadow-sm">
-          {content.logistics.features.map((feature, i) => {
-            const IconComponent = IconMap[feature.iconName] || Globe;
+        {/* 4-column Feature Row */}
+        <div className="bg-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-x border-b border-border">
+          {features.map((feature, i) => {
+            const IconComponent = IconMap[feature.iconName as keyof typeof IconMap] || Globe;
             return (
-              <div 
-                key={i} 
-                className="p-6 md:p-8 space-y-4 border-b sm:border-r last:border-r-0 border-border group hover:bg-muted/10 transition-colors"
+              <div
+                key={i}
+                className="p-6 md:p-8 space-y-4 border-b sm:border-r last:border-r-0 border-border bg-white hover:bg-neutral-50 transition-colors"
               >
-                <div className="p-2.5 w-fit rounded-lg bg-primary/5 group-hover:bg-primary/10 transition-colors">
-                  <IconComponent className="h-7 w-7 text-primary" strokeWidth={1.5} />
+                <div className="p-3.5 w-fit bg-primary text-white rounded-none">
+                  <IconComponent className="h-6 w-6" strokeWidth={2} />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="font-headline font-bold text-base text-foreground uppercase tracking-wide">
+                  <h3 className="font-headline font-black text-base text-[#1A1A1A] uppercase tracking-wide">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed font-body">
+                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-body">
                     {feature.description}
                   </p>
                 </div>
