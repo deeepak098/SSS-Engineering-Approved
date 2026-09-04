@@ -22,8 +22,8 @@ export function Hero() {
 
       <div className="container relative z-10 mx-auto px-4 md:px-8 text-center">
         <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-          <h1 className="font-headline font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight uppercase tracking-tight">
-            INNOVATING INDUSTRIAL <br className="hidden sm:inline" />SOLUTIONS
+          <h1 className="font-headline font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white leading-tight uppercase tracking-tight">
+            INNOVATING<br className="sm:hidden" /> INDUSTRIAL<br className="hidden sm:inline" /> SOLUTIONS
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-neutral-300 font-body max-w-3xl mx-auto leading-relaxed">
             {content.hero.description || "Domestic manufacturer of premium recycled paper egg trays and global exporter of high-precision pulp molding machinery."}

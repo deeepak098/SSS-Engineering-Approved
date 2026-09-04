@@ -185,29 +185,37 @@ export function Header() {
         "md:hidden fixed inset-0 top-20 bg-white z-40 transition-transform duration-300 ease-in-out border-b border-border shadow-xl overflow-y-auto pb-12",
         isOpen ? "translate-x-0" : "translate-x-full"
       )}>
-        <nav className="flex flex-col p-8 space-y-6" aria-label="Mobile Navigation">
-          <div className="space-y-3 border-b pb-3 border-border">
-            <Link
-              href="/products"
-              className="text-lg font-headline font-extrabold uppercase tracking-wider text-[#1A1A1A] block"
-              onClick={() => setIsOpen(false)}
+        <nav className="flex flex-col p-6 space-y-1" aria-label="Mobile Navigation">
+          {/* Products Accordion */}
+          <div className="border-b border-border">
+            <button
+              type="button"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="w-full flex items-center justify-between py-4 text-lg font-headline font-extrabold uppercase tracking-wider text-[#1A1A1A]"
+              aria-expanded={dropdownOpen}
             >
               Products
-            </Link>
-            <div className="pl-4 space-y-2">
+              <ChevronDown className={cn("h-5 w-5 transition-transform duration-200", dropdownOpen && "rotate-180")} />
+            </button>
+            <div className={cn(
+              "overflow-hidden transition-all duration-200",
+              dropdownOpen ? "max-h-40 pb-4" : "max-h-0"
+            )}>
               <Link
                 href="/products#machinery"
-                className="text-sm font-headline text-neutral-600 hover:text-primary block"
-                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-3 py-3 px-4 text-sm font-headline text-neutral-600 hover:text-primary hover:bg-neutral-50"
+                onClick={() => { setIsOpen(false); setDropdownOpen(false); }}
               >
-                • Industrial Machinery
+                <Wrench className="h-4 w-4 text-primary" />
+                Industrial Machinery
               </Link>
               <Link
                 href="/products#egg-trays"
-                className="text-sm font-headline text-neutral-600 hover:text-primary block"
-                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-3 py-3 px-4 text-sm font-headline text-neutral-600 hover:text-primary hover:bg-neutral-50"
+                onClick={() => { setIsOpen(false); setDropdownOpen(false); }}
               >
-                • Egg Trays & Recycled Paper
+                <Package className="h-4 w-4 text-emerald-600" />
+                Egg Trays & Recycled Paper
               </Link>
             </div>
           </div>
@@ -222,7 +230,7 @@ export function Header() {
               key={item.name}
               href={item.href}
               className={cn(
-                "text-lg font-headline font-extrabold border-b pb-3 uppercase tracking-wider",
+                "text-lg font-headline font-extrabold border-b py-4 uppercase tracking-wider",
                 pathname === item.href ? "text-primary border-primary" : "text-[#1A1A1A] border-border"
               )}
               onClick={() => setIsOpen(false)}
@@ -230,9 +238,12 @@ export function Header() {
               {item.name}
             </Link>
           ))}
-          <Button className="w-full font-headline font-extrabold bg-primary hover:bg-primary/90 text-white rounded-none tracking-widest text-xs uppercase py-6" size="lg" asChild>
-            <Link href="/contact" onClick={() => setIsOpen(false)}>CONTACT US</Link>
-          </Button>
+
+          <div className="pt-6 space-y-4">
+            <Button className="w-full font-headline font-extrabold bg-primary hover:bg-primary/90 text-white rounded-none tracking-widest text-sm uppercase py-6 min-h-[48px]" size="lg" asChild>
+              <Link href="/contact" onClick={() => setIsOpen(false)}>CONTACT US</Link>
+            </Button>
+          </div>
         </nav>
       </div>
     </header>

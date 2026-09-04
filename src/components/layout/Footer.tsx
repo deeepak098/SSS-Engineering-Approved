@@ -27,9 +27,9 @@ export function Footer() {
                   key={i}
                   href="#"
                   aria-label={`SSS Engineering on ${label}`}
-                  className="p-2.5 bg-neutral-800 hover:bg-primary text-white transition-colors duration-200"
+                  className="p-3 bg-neutral-800 hover:bg-primary text-white transition-colors duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center"
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-5 w-5" />
                 </Link>
               ))}
             </div>
@@ -89,11 +89,11 @@ export function Footer() {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary shrink-0" />
-                <span>+91 9000058853</span>
+                <a href="tel:+919000058853" className="hover:text-primary transition-colors">+91 9000058853</a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary shrink-0" />
-                <span>inquiry@sssengineering.com</span>
+                <a href="mailto:inquiry@sssengineering.com" className="hover:text-primary transition-colors">inquiry@sssengineering.com</a>
               </li>
             </ul>
           </div>

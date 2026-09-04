@@ -39,7 +39,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-headline font-black text-sm uppercase tracking-wide text-[#1A1A1A]">Call Us</h4>
-                  <p className="text-xs sm:text-sm text-neutral-600 font-body">+91 9000058853</p>
+                  <a href="tel:+919000058853" className="text-xs sm:text-sm text-neutral-600 font-body hover:text-primary transition-colors">+91 9000058853</a>
                 </div>
               </div>
 
@@ -49,7 +49,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-headline font-black text-sm uppercase tracking-wide text-[#1A1A1A]">Email Us</h4>
-                  <p className="text-xs sm:text-sm text-neutral-600 font-body">inquiry@sssengineering.com</p>
+                  <a href="mailto:inquiry@sssengineering.com" className="text-xs sm:text-sm text-neutral-600 font-body hover:text-primary transition-colors">inquiry@sssengineering.com</a>
                 </div>
               </div>
 
@@ -68,33 +68,33 @@ export function ContactSection() {
           {/* Right Column: Contact Form Card */}
           <div className="bg-[#F5F5F5] p-6 sm:p-8 md:p-10 border border-border rounded-none">
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <label htmlFor="fullname" className="text-xs font-headline font-bold uppercase tracking-widest text-[#1A1A1A]">
                     Full Name
                   </label>
-                  <Input id="fullname" placeholder="John Doe" className="bg-white rounded-none border-border focus-visible:ring-primary h-12" required />
+                  <Input id="fullname" placeholder="John Doe" className="bg-white rounded-none border-border focus-visible:ring-primary h-12 min-h-[44px] text-base" required />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-xs font-headline font-bold uppercase tracking-widest text-[#1A1A1A]">
                     Email Address
                   </label>
-                  <Input id="email" type="email" placeholder="john@company.com" className="bg-white rounded-none border-border focus-visible:ring-primary h-12" required />
+                  <Input id="email" type="email" placeholder="john@company.com" className="bg-white rounded-none border-border focus-visible:ring-primary h-12 min-h-[44px] text-base" required />
                 </div>
               </div>
               <div className="space-y-2">
                 <label htmlFor="subject" className="text-xs font-headline font-bold uppercase tracking-widest text-[#1A1A1A]">
                   Subject
                 </label>
-                <Input id="subject" placeholder="Inquiry about Industrial Machinery" className="bg-white rounded-none border-border focus-visible:ring-primary h-12" required />
+                <Input id="subject" placeholder="Inquiry about Industrial Machinery" className="bg-white rounded-none border-border focus-visible:ring-primary h-12 min-h-[44px] text-base" required />
               </div>
               <div className="space-y-2">
                 <label htmlFor="message" className="text-xs font-headline font-bold uppercase tracking-widest text-[#1A1A1A]">
                   Message
                 </label>
-                <Textarea id="message" placeholder="Describe your machine requirements, capacity needs, or questions..." className="min-h-[140px] bg-white rounded-none border-border focus-visible:ring-primary p-4" required />
+                <Textarea id="message" placeholder="Describe your machine requirements, capacity needs, or questions..." className="min-h-[140px] bg-white rounded-none border-border focus-visible:ring-primary p-4 text-base" required />
               </div>
-              <Button type="submit" className="w-full font-headline font-extrabold py-6 text-sm bg-primary hover:bg-primary/90 text-white rounded-none tracking-widest uppercase">
+              <Button type="submit" className="w-full font-headline font-extrabold py-6 min-h-[48px] text-sm bg-primary hover:bg-primary/90 text-white rounded-none tracking-widest uppercase">
                 SEND MESSAGE
               </Button>
             </form>

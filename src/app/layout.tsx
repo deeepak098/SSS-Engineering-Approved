@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   creator: 'SSS Engineering Solutions',
   publisher: 'SSS Engineering Solutions',
   formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+    email: true,
+    address: true,
+    telephone: true,
   },
   openGraph: {
     type: 'website',
