@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ProductGrid } from '@/components/home/ProductGrid';
+import { EggTrayGrid } from '@/components/home/EggTrayGrid';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function ProductsPage() {
           </div>
         </section>
         <ProductGrid />
+        <EggTrayGrid />
       </main>
       <Footer />
     </div>
