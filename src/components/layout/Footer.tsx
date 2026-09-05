@@ -102,7 +102,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500 space-y-4 md:space-y-0 font-body">
           <div className="flex flex-wrap items-center gap-3">
-            <p>© 2026 SSS Engineering Solutions. All Rights Reserved.</p>
+            <p>© {new Date().getFullYear()} SSS Engineering Solutions. All Rights Reserved.</p>
             <span className="text-neutral-700 hidden sm:inline">|</span>
             <Link href="/admin" className="flex items-center gap-1 hover:text-white transition-colors text-neutral-400">
               <Settings className="h-3 w-3" /> Admin
